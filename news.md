@@ -5,4 +5,6 @@ nav_order: 1
 permalink: /news/
 ---
 
-Under construction
+# News
+
+under construction
