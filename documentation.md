@@ -45,10 +45,3 @@ Main features include:
 * Flexible output of gridded model variables, either for specific dates or periodically (e.g., daily
   or monthly), optionally aggregated to averages or sums in NetCDF, GeoTIFF or ASCII Grid format
 * Live view window for displaying the model state in real time
-
-
-
-### Examples
-
-Example data sets for running the model can be downloaded from
-https://github.com/openamundsen/openamundsen-examples.
