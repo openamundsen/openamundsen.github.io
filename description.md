@@ -7,7 +7,7 @@ permalink: /des/
 ---
 
 
-# openAMUNDSEN
+# Model description
 
 openAMUNDSEN is a modular snow and hydroclimatological modeling framework written in Python.
 

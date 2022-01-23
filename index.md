@@ -6,8 +6,11 @@ permalink: /
 ---
 # openAMUNDSEN
 
-This is home of the hydroclimatological modeling framework openAMUNDSEN. You can find the latest model version at [GitHub](https://github.com/openamundsen/openamundsen).
+This is home of the modular snow and hydroclimatological modeling framework openAMUNDSEN. You can find the latest model version at [GitHub](https://github.com/openamundsen/openamundsen).
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/17546246/115751189-3afe4c00-a399-11eb-8bfa-87d0a86c2119.gif" />
+</p>
 
 Check out these pages:
 
@@ -17,5 +20,3 @@ Check out these pages:
 - [Live demo - Try the model online!](/demo/)
 - [Publications](/publications/)
 - [About](/about/)
-
-You can find a ready-to-use-online version of the model here: [jupyter.openamundsen.org](https://jupyter.openamundsen.org)
