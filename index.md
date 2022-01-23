@@ -12,7 +12,9 @@ This is home of the hydroclimatological modeling framework openAMUNDSEN. You can
 Check out these pages:
 
 - [News](/news/)
-- [Model documentation](/doc/)
+- [Model description - What's inside?](/des/)
+- [Model documentation - How to use the model](/doc/)
+- [Live demo - Try the model online!](/demo/)
 - [Publications](/publications/)
 - [About](/about/)
 
