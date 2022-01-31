@@ -83,14 +83,14 @@
     "url": "http://localhost:4000/doc/",
     "relUrl": "/doc/"
   },"14": {
-    "doc": "Radiation modeling",
-    "title": "Calculating the energy- and mass-balance of snow and ice",
+    "doc": "Energy and mass balance",
+    "title": "Calculating the energy and mass balance of snow and ice",
     "content": "under construction . ",
-    "url": "http://localhost:4000/des/energy#calculating-the-energy--and-mass-balance-of-snow-and-ice",
-    "relUrl": "/des/energy#calculating-the-energy--and-mass-balance-of-snow-and-ice"
+    "url": "http://localhost:4000/des/energy#calculating-the-energy-and-mass-balance-of-snow-and-ice",
+    "relUrl": "/des/energy#calculating-the-energy-and-mass-balance-of-snow-and-ice"
   },"15": {
-    "doc": "Radiation modeling",
-    "title": "Radiation modeling",
+    "doc": "Energy and mass balance",
+    "title": "Energy and mass balance",
     "content": " ",
     "url": "http://localhost:4000/des/energy",
     "relUrl": "/des/energy"
@@ -217,58 +217,76 @@
   },"36": {
     "doc": "Precipitation correction",
     "title": "Correction of precipitation undercatch",
-    "content": "under construction . ",
+    "content": "under construction . Precipitation measurements are vital input for every hydrological model. Particularly measuring solid precipitation in complex alpine terrain is prone to large errors which typically results in an undercatch of precipitation. High wind speeds can cause an undercatch of snowfall up to 50 % (Kochendorfer et al. 2017) when using typical precipitation gauges / pluviometers. ",
     "url": "http://localhost:4000/des/precipitation#correction-of-precipitation-undercatch",
     "relUrl": "/des/precipitation#correction-of-precipitation-undercatch"
   },"37": {
+    "doc": "Precipitation correction",
+    "title": "Approaches implemented in the model",
+    "content": "Three different approaches are implemented in openAMUNDSEN to correct for the undercatch of solid precipitation: . | Constant snow correction factor | WMO approach (Goodison et al. 1998) | Method proposed by Kochendorfer et al. 2017 | . Constant correction factor for snowfall . A basic method to correct for undercatch is a simple, linear scaling of precipitation. The fracture of snowfall (i.e. solid precipitation) is multiplied by a defined, constant factor (e.g. 1.25 for 25% of added solid precipitation). WMO approach (Goodison et al. 1998) . The WMO approach uses different transfer functions for different type of gauges to scale solid precipitation using measured meteorological conditions (i.e. temperature and/or wind speed). This approach provides functions for following gauge types/setups: . | nipher | tretyakov | us_shielded | us_unshielded | hellmann | . Method proposed by Kochendorfer et al. 2017 . The method introduced by Kochendorfer et al. estimates undercatch regardless of precipitation phase. This method also uses transfer functions for different measuring setups and takes wind speed and temperature into account. In contrast to the ‘WMO’method, the transfer functions were derived from different windshields used for the same gauge (3-wire T200B, Geonor Inc., Oslo, Norway), as well as from a unshielded gauge. Supported measuring setups are: - unshielded - single alter - double alter - small DFIR - Belfort double-Alter . ",
+    "url": "http://localhost:4000/des/precipitation#approaches-implemented-in-the-model",
+    "relUrl": "/des/precipitation#approaches-implemented-in-the-model"
+  },"38": {
+    "doc": "Precipitation correction",
+    "title": "Choose and configure method in openAMUNDSEN",
+    "content": ". | Constant correction factor for snowfall | . # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution precipitation_correction: - method: constant_scf scf: 1.25 . | Method proposed by Kochendorfer et al. 2017 | . # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution precipitation_correction: - method: kochendorfer # use the Kochendorfer et al. (2017) transfer functions gauge: us_un # gauge-specific transfer function to use according to Kochendorfer et al. (2017, Table 3) . | WMO approach (Goodison et al. 1998) | . # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution precipitation_correction: - method: wmo gauge: hellmann . ",
+    "url": "http://localhost:4000/des/precipitation#choose-and-configure-method-in-openamundsen",
+    "relUrl": "/des/precipitation#choose-and-configure-method-in-openamundsen"
+  },"39": {
+    "doc": "Precipitation correction",
+    "title": "References",
+    "content": ". | Goodison, B. E., Louie, P., &amp; Yang, D. (1998). WMO solid precipitation measurement intercomparison (World Meteorological Organization, p. 212). World Meteorological Organization. https://library.wmo.int/doc_num.php?explnum_id=9694 . | Kochendorfer, J., Rasmussen, R., Wolff, M., Baker, B., Hall, M. E., Meyers, T., Landolt, S., Jachcik, A., Isaksen, K., Brækkan, R., &amp; Leeper, R. (2017). The quantification and correction of wind-induced precipitation measurement errors. Hydrology and Earth System Sciences, 21(4), 1973–1989. https://doi.org/10.5194/hess-21-1973-2017 . | . ",
+    "url": "http://localhost:4000/des/precipitation#references",
+    "relUrl": "/des/precipitation#references"
+  },"40": {
     "doc": "Precipitation correction",
     "title": "Precipitation correction",
     "content": " ",
     "url": "http://localhost:4000/des/precipitation",
     "relUrl": "/des/precipitation"
-  },"38": {
+  },"41": {
     "doc": "Publications",
     "title": "Publications",
     "content": "under construction . ",
     "url": "http://localhost:4000/publications/",
     "relUrl": "/publications/"
-  },"39": {
+  },"42": {
     "doc": "Radiation modeling",
     "title": "Short- and longwave radiative flux modeling",
-    "content": "under construction . ",
+    "content": "under construction . Short- and longwave radiative flux modeling . The radiation balance of snow is the factor, that contributes the most to the energy balance of the snow pack and consists of following terms: . - sw_in: incoming short wave radiation - sw_out: reflected short wave radiation - lw_in: incoming long wave radiation - lw_out emmited long wave radiation Qradiation = SW_in - SW_out + LW_in - LW_out - evtl. klassische Abbildung mit Zusammensetzung der Strahlung? . SW_in The incoming short wave radiation of a point strongly varies in space and time and therefore is challenging to interpolate. openAMUNDSEN calculates a potential radiation for each grid cell, taking the position of the sun, orographic shadows, local aspect and slope, the atmospheric composition (aerosols, water content…) and reflections between snow and clouds as well as reflections from snow covered neighbouring slopes into account. In order to assume cloud cover, the potential radiation is compared to observed radiation measurements. Cloud cover is then interpolated using the regression based approach. - hier evtl. Video von Uli - . SW_out The reflected short wave radiation depends on the snow surface albedo, i.e. the ability to reflect incoming short wave radiation. The albedo varies with snow characteristics like grain size, density and snow impurity. In openAMUNDSEN snow albedo is modelled along a aging curve approach. ( a = amin + aadd *e-kn . amin = minimum snow albedo aadd = additive Albedo k = recession coefficient n = number of days since last significant snowfall (&gt;0.5mm/h) ) . LW_in Incoming longwave radiation is calculated as a function of temperature dependent on the Stefan-Boltzmann law. openAMUNDSEN accounts for longwave radiation from the atmosphere as well as from neighboring slopes. The atmospheric emessivity thereby depends on water vapour content in clear sky conditions and cloud cover in overcast conditions. LW_out Outgoing longwave radiation is calculated following the Stephan Boltzmann law once again, using snow emissivity (0.99) and snow surface tepmerature to solve the equation. References Bernard Bourges. Improvement in solar declination computation. Solar Energy, 1985, 35(4), pp.367-369. Corripio, J. G. (2002). Modelling the energy balance of high altitude glacierised basins in the Central Andes. PhD thesis, University of Edinburgh. Corripio, J. G. (2003). Vectorial algebra algorithms for calculating terrain parameters from DEMs and solar radiation modelling in mountainous terrain. International Journal of Geographical Information Science, 17(1), 1–23. https://doi.org/10.1080/13658810210157796 J. W. Spencer, \"Fourier series representation of the position of the sun\" in Search 2 (5), p. 172 (1971) Snow Hydrology: Summary Report of the Snow Investigations. Published by the North Pacific Division, Corps of Engineers, U.S. Army, Portland, Oregon, 1956. 437 pages, 70 pages of plates, maps and figs., 27 cm. https://doi.org/10.3189/S0022143000024503 Hanzer, F., Helfricht, K., Marke, T., &amp; Strasser, U. (2016). Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments. The Cryosphere, 10(4), 1859–1881. https://doi.org/10.5194/tc-10-1859-2016 Essery, R., Morin, S., Lejeune, Y., &amp; B Ménard, C. (2013). A comparison of 1701 snow models using observations from an alpine site. Advances in Water Resources, 55, 131–148. https://doi.org/10.1016/j.advwatres.2012.07.013 Dutra, E., Balsamo, G., Viterbo, P., Miranda, P., Beljaars, A., Schär, C., &amp; Elder, K. (2009). New snow scheme in HTESSEL: description and offline validation. ECMWF. https://doi.org/10.21957/98x9mrv1y Prata, A. J. (1996). A new long-wave formula for estimating downward clear-sky radiation at the surface. Quarterly Journal of the Royal Meteorological Society, 122(533), 1127–1151. doi:10.1002/qj.49712253306 Liston, G. E., &amp; Elder, K. (2006). A Meteorological Distribution System for High-Resolution Terrestrial Modeling (MicroMet). Journal of Hydrometeorology, 7(2), 217–234. https://doi.org/10.1175/JHM486.1 Greuell, W., Knap, W. H., &amp; Smeets, P. C. (1997). Elevational changes in meteorological variables along a midlatitude glacier during summer. Journal of Geophysical Research, 102(D22), 25941–25954. https://doi.org/10.1029/97JD02083 . ",
     "url": "http://localhost:4000/des/meteo#short--and-longwave-radiative-flux-modeling",
     "relUrl": "/des/meteo#short--and-longwave-radiative-flux-modeling"
-  },"40": {
+  },"43": {
     "doc": "Radiation modeling",
     "title": "Radiation modeling",
     "content": " ",
     "url": "http://localhost:4000/des/meteo",
     "relUrl": "/des/meteo"
-  },"41": {
+  },"44": {
     "doc": "Running the model",
     "title": "Running the model",
     "content": "When the input data and the model configuration have been prepared, a model run can be started either using the openamundsen command line utility (openamundsen config_file.yml), or from within Python using the following syntax: . import openamundsen as oa config = oa.read_config('config_file.yml') # read in configuration file model = oa.OpenAmundsen(config) # create OpenAmundsen object and populate unspecified parameters with default values model.initialize() # read in input data files, initialize state variables etc. model.run() # run the model . ",
     "url": "http://localhost:4000/doc/runningthemodel",
     "relUrl": "/doc/runningthemodel"
-  },"42": {
+  },"45": {
     "doc": "Runoff",
     "title": "Simulating catchment runoff and streamflow",
     "content": "under construction . ",
     "url": "http://localhost:4000/des/runoff#simulating-catchment-runoff-and-streamflow",
     "relUrl": "/des/runoff#simulating-catchment-runoff-and-streamflow"
-  },"43": {
+  },"46": {
     "doc": "Runoff",
     "title": "Runoff",
     "content": " ",
     "url": "http://localhost:4000/des/runoff",
     "relUrl": "/des/runoff"
-  },"44": {
+  },"47": {
     "doc": "Model structure",
     "title": "General model structure",
     "content": "under construction . ",
     "url": "http://localhost:4000/des/structure#general-model-structure",
     "relUrl": "/des/structure#general-model-structure"
-  },"45": {
+  },"48": {
     "doc": "Model structure",
     "title": "Model structure",
     "content": " ",
