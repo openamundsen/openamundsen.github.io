@@ -36,11 +36,11 @@ This approach provides functions for following gauge types/setups:
 The method introduced by Kochendorfer et al. estimates undercatch regardless of precipitation phase. This method also uses transfer functions for different measuring setups and takes wind speed and temperature into account. In contrast to the 'WMO'method, the transfer functions were derived from different windshields used for the same gauge (3-wire T200B, Geonor Inc., Oslo, Norway), as well as from a unshielded gauge.
 
 Supported measuring setups are:
-			- unshielded
-			- single alter
-			- double alter
-			- small DFIR
-			- Belfort double-Alter
+- unshielded
+- single alter
+- double alter
+- small DFIR
+- Belfort double-Alter
 
 ## Choose and configure method in openAMUNDSEN
 
