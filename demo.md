@@ -7,4 +7,4 @@ permalink: /demo/
 
 # Try the model online!
 
-You can find a ready-to-use-online version of the model here: [jupyter.openamundsen.org](https://jupyter.openamundsen.org). Feel free to write a short email to [michael.warscher@uibk.ac.at](mailto:michael.warscher@uibk.ac.at) to request a login.
+You can find a ready-to-use-online version of the model here: [jupyter.openamundsen.org](https://jupyter.openamundsen.org). Please send a mail to [michael.warscher@uibk.ac.at](mailto:michael.warscher@uibk.ac.at) to request a login.
