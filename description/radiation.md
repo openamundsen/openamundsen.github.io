@@ -13,28 +13,16 @@ under construction
 <!-- Short- and long-wave radiative fluxes are a key component of the energy balance of the snow cover. Specifically
 
 ## Incoming short-wave radiation
-The incoming short wave radiation of a point strongly varies in space and time and therefore is challenging to interpolate. openAMUNDSEN calculates a potential radiation for each grid cell, taking the position of the sun, orographic shadows, local aspect and slope, the atmospheric composition (aerosols, water content...) and reflections between snow and clouds as well as reflections from snow covered neighbouring slopes into account. In order to assume cloud cover, the potential radiation is compared to observed radiation measurements. Cloud cover is then interpolated using the methods described in [Processing meteo data](/des/meteo).
-
-
-		- hier evtl. Video von Uli -
+Incoming short-wave radiation strongly varies in time and space depending on terrain position and atmospheric state. To regionalise point measurements, openAMUNDSEN calculates potential global radiation for each grid cell based on position of the sun, orographic shadows, local aspect and slope, atmospheric composition (aerosols, water vapour content), multiple reflections between snow and clouds as well as from snow covered neighbouring slopes. Calculated potential global radiation is then compared to observed global radiation to determine cloud coverage. In the final step, cloud coverage is regionalised using the methods described in [Processing meteo data](/des/meteo), and actual incoming short-wave radiation is calculated from potential global radiation and cloud coverage for each model grid cell.
 
 ## Outgoing / reflected short-wave radiation
-The reflected short wave radiation depends on the snow surface albedo, i.e. the ability to reflect incoming short wave radiation. The albedo varies with snow characteristics like grain size, density and snow impurity. In openAMUNDSEN snow albedo is modelled along a aging curve approach.
-
-(	a = amin + aadd *e-kn  
-
-	amin = 	minimum snow albedo
-	aadd = 	additive Albedo
-	k =	recession coefficient
-	n = 	number of days since last significant snowfall (>0.5mm/h)
-)
+Reflected short wave radiation depends on surface albedo, i.e. the ability to reflect incoming short-wave radiation. For snow, albedo varies with snow characteristics like grain size, density and snow impurity. In openAMUNDSEN, snow albedo is modelled using an ageing-curve approach (Citation xxx).
 
 ## Incoming long-wave radiation
-Incoming long-wave radiation is calculated as a function of temperature dependent on the Stefan-Boltzmann law and atmospheric composition. openAMUNDSEN accounts for long-wave radiation from the atmosphere as well as from neighbouring slopes. The atmospheric emissivity thereby depends on water vapour content in clear sky conditions and cloud cover in overcast conditions.
+Incoming long-wave radiation from the sky is a function of atmospheric composition and temperature and is determined using the the Stefan-Boltzmann law. Atmospheric emissivity thereby depends on water vapour content in clear sky conditions and cloud cover in overcast situations. Additionally, openAMUNDSEN accounts for long-wave radiation from the neighbouring slopes.
 
 ## Outgoing / emitted long-wave radiation
-Outgoing longwave radiation is calculated following the Stephan-Boltzmann law with the emissivity of snow and modelled snow surface temperature.
-
+Outgoing long-wave radiation is calculated following the Stephan-Boltzmann law with the emissivity of snow and modelled snow surface temperature.
 
 
 ## References
