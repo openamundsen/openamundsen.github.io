@@ -1,352 +1,418 @@
 {"0": {
     "doc": "About",
     "title": "About",
-    "content": "under construction . ",
+    "content": "The open-source project openAMUNDSEN was born in 2020 with the first release of the model at GitHub. The model builds upon a long history of snow model development dating back to 2001. openAMUNDSEN is licensed under the MIT License. The project is hosted at the research team “Human-environment systems research” Department of Geography, University of Innsbruck. The project is supported by the Department of Geography and the Faculty of Geo- and Atmospheric Sciences of the University of Innsbruck. Contact: Ulrich Strasser . ",
     "url": "http://localhost:4000/about/",
     "relUrl": "/about/"
   },"1": {
     "doc": "Inside canopy",
     "title": "Simulating inside-canopy micrometeorology and snow processes (interception, sublimation, melt unload)",
-    "content": " ",
+    "content": "The processes affecting a snow cover beneath a forest canopy are distinct from those in the open: on one hand, the meteorological conditions relevant for the energy transfer at the snow surface beneath the canopy are different, and on the other hand, a certain amount of precipitation is retained in the interception storage of stems, branches and needles. Snow that is intercepted in the canopy can melt, fall down, or sublimate into the air masses above the canopy. This latter process leads to a reduction of precipitation accumulated and stored in the ground snowpack. ",
     "url": "http://localhost:4000/des/canopy#simulating-inside-canopy-micrometeorology-and-snow-processes-interception-sublimation-melt-unload",
     "relUrl": "/des/canopy#simulating-inside-canopy-micrometeorology-and-snow-processes-interception-sublimation-melt-unload"
   },"2": {
     "doc": "Inside canopy",
     "title": "Inside-canopy micrometeorology",
-    "content": " ",
+    "content": "Forest canopies generally lead to a reduction of global radiation, precipitation and wind speed, whereas humidity and long-wave radiation are increased and the diurnal temperature cycle is attenuated. In openAMUNDSEN, the micrometeorological conditions for the ground beneath a forest canopy are derived from the interpolated measurements (if all stations are located in the open) by applying a set of modifications for solar and thermal radiation, temperature, humidity and wind speed. Meteorologic conditions inside canopy differ from those in the open. The modifications are based on the effective Leaf Area Index (LAI) of the forest. ",
     "url": "http://localhost:4000/des/canopy#inside-canopy-micrometeorology",
     "relUrl": "/des/canopy#inside-canopy-micrometeorology"
   },"3": {
     "doc": "Inside canopy",
     "title": "Snow-forest interaction",
-    "content": "under construction . ",
+    "content": "In AMUNDSEN, the processes of snow-forest interaction of interception, i.e. sublimation, unloading by melt, and exceeding the canopy snow–holding capacity are calculated as a function of LAI. Liquid precipitation is assumed to fall through the canopy and is added to the ground snow cover. ",
     "url": "http://localhost:4000/des/canopy#snow-forest-interaction",
     "relUrl": "/des/canopy#snow-forest-interaction"
   },"4": {
+    "doc": "Inside canopy",
+    "title": "Choose and configure method in openAMUNDSEN",
+    "content": "canopy: enabled: true . ",
+    "url": "http://localhost:4000/des/canopy#choose-and-configure-method-in-openamundsen",
+    "relUrl": "/des/canopy#choose-and-configure-method-in-openamundsen"
+  },"5": {
+    "doc": "Inside canopy",
+    "title": "References",
+    "content": ". | Strasser, U., Warscher, M., &amp; Liston, G. E. (2011). Modeling Snow-Canopy Processes on an Idealized Mountain. Journal of Hydrometeorology, 12(4), 663–677. https://doi.org/10.1175/2011JHM1344.1 | . ",
+    "url": "http://localhost:4000/des/canopy#references",
+    "relUrl": "/des/canopy#references"
+  },"6": {
     "doc": "Inside canopy",
     "title": "Inside canopy",
     "content": " ",
     "url": "http://localhost:4000/des/canopy",
     "relUrl": "/des/canopy"
-  },"5": {
+  },"7": {
     "doc": "Configuration",
     "title": "Configuration",
-    "content": "The configuration of an openAMUNDSEN model run can either be read in from a YAML file or be passed directly as a dictionary from within Python. This is an example of a YAML configuration file: . domain: rofental # name of the model domain (corresponding to the domain part of the spatial input data filenames) start_date: \"2020-10-01\" end_date: \"2021-03-31\" resolution: 50 # spatial resolution (m) timestep: H # temporal resolution as a pandas-compatible frequency string (e.g., \"H\", \"3H\", \"D\") crs: \"epsg:32632\" # CRS of the input grids timezone: 1 # timezone of the model domain (difference to UTC in h) results_dir: results # directory for storing the model outputs # Input data configuration input_data: grids: dir: input/grid # location of the input grids (DEM, ROI etc.) meteo: dir: input/meteo # location of the meteorological input data format: csv # input format (CSV or NetCDF) crs: \"epsg:4326\" # CRS of the station coordinates (when using CSV) # Output data configuration output_data: # Time series (point) outputs configuration timeseries: # List of points to be written points: - x: 642579 # x coordinate in the domain CRS y: 5193069 # y coordinate in the domain CRS name: testpoint # point name (optional) add_default_variables: true # write default point output variables variables: # optional additional output variables not written by default - var: surface.turbulent_exchange_coeff # Configuration for gridded outputs grids: format: netcdf # \"netcdf\", \"ascii\", \"geotiff\" or \"memory\" variables: - var: meteo.precip # internal variable name name: precip_month # NetCDF output variable name freq: M # write frequency (if not specified, write every timestep) agg: sum # aggregation function (\"sum\", \"mean\" or empty) - var: snow.melt freq: M agg: sum - var: snow.swe freq: D meteo: # Spatial interpolation parameters interpolation: temperature: trend_method: fixed # use fixed monthly temperature lapse rates precipitation: trend_method: fractional # use fixed monthly fractional precipitation gradients lapse_rate: # (m-1) - 0.00048 # J - 0.00046 # F - 0.00041 # M - 0.00033 # A - 0.00028 # M - 0.00025 # J - 0.00024 # J - 0.00025 # A - 0.00028 # S - 0.00033 # O - 0.00041 # N - 0.00046 # D humidity: trend_method: fixed # use fixed monthly dew point temperature lapse rates # Precipitation phase determination parameters precipitation_phase: method: wet_bulb_temp # use wet-bulb temperature for precipitation phase determination threshold_temp: 273.65 # threshold temperature (K) in which 50% of precipitation falls as snow temp_range: 1. # temperature range in which mixed precipitation can occur # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution precipitation_correction: - method: wmo gauge: hellmann snow: model: multilayer # snow scheme (\"multilayer\" or \"cryolayers\") # Number of layers and minimum thicknesses (m) when using the multilayer model min_thickness: - 0.1 - 0.2 - 0.4 albedo: min: 0.55 # minimum snow albedo max: 0.85 # maximum snow albedo cold_snow_decay_timescale: 480 # albedo decay timescale for cold (T &lt; 0 °C) snow (h) melting_snow_decay_timescale: 200 # albedo decay timescale for melting snow (h) refresh_snowfall: 0.5 # snowfall amount for resetting albedo to the maximum value (kg m-2 h-1) . Only few configuration parameters (domain, start_date, end_date, resolution, timezone and the input data directories) are mandatory, for all other parameters default values are used otherwise. A detailed documentation of all model parameters will be available soon (in the meantime, the available parameters and their default values can be looked up in configschema.yml). ",
+    "content": "The configuration of an openAMUNDSEN model run can either be read in from a YAML file or be passed directly as a dictionary from within Python. Only few configuration parameters (domain, start_date, end_date, resolution, timezone and the input data directories) are mandatory, for all other parameters default values are used otherwise. The different options for the process modules are described at the respective sections in the model description. A detailed documentation of all model parameters will be available soon (in the meantime, the available parameters and their default values can be looked up in configschema.yml. This is an example of a YAML configuration file: . domain: rofental # name of the model domain (corresponding to the domain part of the spatial input data filenames) start_date: \"2020-10-01\" end_date: \"2021-03-31\" resolution: 50 # spatial resolution (m) timestep: H # temporal resolution as a pandas-compatible frequency string (e.g., \"H\", \"3H\", \"D\") crs: \"epsg:32632\" # CRS of the input grids timezone: 1 # timezone of the model domain (difference to UTC in h) results_dir: results # directory for storing the model outputs # Input data configuration input_data: grids: dir: input/grid # location of the input grids (DEM, ROI etc.) meteo: dir: input/meteo # location of the meteorological input data format: csv # input format (CSV or NetCDF) crs: \"epsg:4326\" # CRS of the station coordinates (when using CSV) # Output data configuration output_data: # Time series (point) outputs configuration timeseries: # List of points to be written points: - x: 642579 # x coordinate in the domain CRS y: 5193069 # y coordinate in the domain CRS name: testpoint # point name (optional) add_default_variables: true # write default point output variables variables: # optional additional output variables not written by default - var: surface.turbulent_exchange_coeff # Configuration for gridded outputs grids: format: netcdf # \"netcdf\", \"ascii\", \"geotiff\" or \"memory\" variables: - var: meteo.precip # internal variable name name: precip_month # NetCDF output variable name freq: M # write frequency (if not specified, write every timestep) agg: sum # aggregation function (\"sum\", \"mean\" or empty) - var: snow.melt freq: M agg: sum - var: snow.swe freq: D meteo: # Spatial interpolation parameters interpolation: temperature: trend_method: fixed # use fixed monthly temperature lapse rates precipitation: trend_method: fractional # use fixed monthly fractional precipitation gradients lapse_rate: # (m-1) - 0.00048 # J - 0.00046 # F - 0.00041 # M - 0.00033 # A - 0.00028 # M - 0.00025 # J - 0.00024 # J - 0.00025 # A - 0.00028 # S - 0.00033 # O - 0.00041 # N - 0.00046 # D humidity: trend_method: fixed # use fixed monthly dew point temperature lapse rates # Precipitation phase determination parameters precipitation_phase: method: wet_bulb_temp # use wet-bulb temperature for precipitation phase determination threshold_temp: 273.65 # threshold temperature (K) in which 50% of precipitation falls as snow temp_range: 1. # temperature range in which mixed precipitation can occur # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution precipitation_correction: - method: wmo gauge: hellmann snow: model: multilayer # snow scheme (\"multilayer\" or \"cryolayers\") # Number of layers and minimum thicknesses (m) when using the multilayer model min_thickness: - 0.1 - 0.2 - 0.4 albedo: min: 0.55 # minimum snow albedo max: 0.85 # maximum snow albedo cold_snow_decay_timescale: 480 # albedo decay timescale for cold (T &lt; 0 °C) snow (h) melting_snow_decay_timescale: 200 # albedo decay timescale for melting snow (h) refresh_snowfall: 0.5 # snowfall amount for resetting albedo to the maximum value (kg m-2 h-1) . ",
     "url": "http://localhost:4000/doc/configuration",
     "relUrl": "/doc/configuration"
-  },"6": {
+  },"8": {
     "doc": "Live demo",
     "title": "Try the model online!",
     "content": "You can find a ready-to-use-online version of the model here: jupyter.openamundsen.org. Please send a mail to michael.warscher@uibk.ac.at to request a login. ",
     "url": "http://localhost:4000/demo/#try-the-model-online",
     "relUrl": "/demo/#try-the-model-online"
-  },"7": {
+  },"9": {
     "doc": "Live demo",
     "title": "Live demo",
     "content": " ",
     "url": "http://localhost:4000/demo/",
     "relUrl": "/demo/"
-  },"8": {
+  },"10": {
     "doc": "Description",
     "title": "Model description",
     "content": "openAMUNDSEN is a modular snow and hydroclimatological modeling framework written in Python. ",
     "url": "http://localhost:4000/des/#model-description",
     "relUrl": "/des/#model-description"
-  },"9": {
+  },"11": {
     "doc": "Description",
     "title": "Overview",
     "content": "openAMUNDSEN is a fully distributed model, designed primarily for resolving the mass and energy balance of snow and ice covered surfaces in mountain regions. Typically, it is applied in areas ranging from the point scale to the regional scale (i.e., up to some hundreds to thousands of square kilometers), using a spatial resolution of 10–100 m and a temporal resolution of 1–3 h, however its potential applications are very versatile. Main features include: . | Spatial interpolation of scattered meteorological point measurements using a combined lapse rate – inverse distance weighting scheme | Calculation of solar radiation taking into account terrain slope and orientation, hill shading and atmospheric transmission losses and gains due to scattering, absorption, and reflections | Adjustment of precipitation using several correction functions for wind-induced undercatch and redistribution of snow using terrain-based parameterizations | Simulation of the snow and ice mass and energy balance using either a multilayer scheme or a bulk-layering scheme using separate layers for new snow, old snow, firn and ice | Modification of the meteorological variables for inside-canopy conditions in forested areas and calculation of forest snow processes (interception, sublimation and melt unload) | Calculation of snowmelt using the surface energy balance or a temperature index/enhanced temperature index method | Calculation of evapotranspiration for snow-free surfaces using the FAO Penman-Monteith method | Usage of arbitrary timesteps (e.g. 10 minutes, daily) while resampling forcing data to the desired time resolution if necessary | Flexible output of time series including arbitrary model variables for selected point locations in NetCDF or CSV format | Flexible output of gridded model variables, either for specific dates or periodically (e.g., daily or monthly), optionally aggregated to averages or sums in NetCDF, GeoTIFF or ASCII Grid format | Live view window for displaying the model state in real time | . ",
     "url": "http://localhost:4000/des/#overview",
     "relUrl": "/des/#overview"
-  },"10": {
+  },"12": {
     "doc": "Description",
     "title": "Description",
     "content": " ",
     "url": "http://localhost:4000/des/",
     "relUrl": "/des/"
-  },"11": {
+  },"13": {
     "doc": "Documentation",
     "title": "User guide",
     "content": ". ",
     "url": "http://localhost:4000/doc/#user-guide",
     "relUrl": "/doc/#user-guide"
-  },"12": {
+  },"14": {
     "doc": "Documentation",
     "title": "Overview",
     "content": "These pages describe how to install, set up, and run openAMUNDSEN. ",
     "url": "http://localhost:4000/doc/#overview",
     "relUrl": "/doc/#overview"
-  },"13": {
+  },"15": {
     "doc": "Documentation",
     "title": "Documentation",
     "content": " ",
     "url": "http://localhost:4000/doc/",
     "relUrl": "/doc/"
-  },"14": {
+  },"16": {
     "doc": "Energy and mass balance",
     "title": "Calculating the energy and mass balance of snow and ice",
-    "content": "under construction . ",
+    "content": "Generally, the energy balance of a snowpack can be expressed as: . Q + H + E + P + G = C + M Q = net radiation H = sensible heat flux E = latent heat flux P = advective heat flux caused by precipitation G = ground heat flux C = energy transferred to temperature changes within the snowpack M = energy transferred to snow melt . ",
     "url": "http://localhost:4000/des/energy#calculating-the-energy-and-mass-balance-of-snow-and-ice",
     "relUrl": "/des/energy#calculating-the-energy-and-mass-balance-of-snow-and-ice"
-  },"15": {
+  },"17": {
+    "doc": "Energy and mass balance",
+    "title": "Energy balance in openAMUNDSEN",
+    "content": "Two different layering schemes (“Cryolayers” / “Multilayer”) are implemented in the model. The energy balance calculation depends on the selected layering scheme. Snow layering scheme “Cryolayers” . “Cryolayers” is a bulk-layering scheme using separate layers for new snow, old snow, firn and ice. When using this scheme, the snowpack is taken as one layer to solve its energy balance. If air temperature rises above 0° C the model assumes that melting processes are possible and checks for a positive surface energy balance. If the surface energy balance is positive, melting processes occur where the melt amount is determined by the simulated available excess energy. If the air temperature is below 0°C, an iterative procedure to compute the snow surface temperature needed for closing the energy balance is applied. In this procedure, the snow surface temperature is altered until the residual energy balance passes zero. Snow layering scheme “Multilayer” . “Multilayer” is a scheme that divides the snowpack in distinct layers to calculate heat fluxes within the snow pack (Essery 2015). To solve the energy balance within this scheme, in a first step, melt is assumed to be 0 for the surface temperature change of every timestep. If the energy balance results in a surface temperature above 0° C, snow is melting. The temperature increment has to be recalculated assuming that all of the snow melts. If this results in a surface temperature below 0°C, snow melts only partially during the timestep (Essery 2015). ",
+    "url": "http://localhost:4000/des/energy#energy-balance-in-openamundsen",
+    "relUrl": "/des/energy#energy-balance-in-openamundsen"
+  },"18": {
+    "doc": "Energy and mass balance",
+    "title": "Choose and configure method in openAMUNDSEN",
+    "content": "“Cryolayers” scheme . # Snow parameters snow: model: cryolayers # snow scheme (multilayer or cryolayers) thermal_conductivity: 0.24 # snow thermal conductivity (W m-1 K-1) roughness_length: 0.01 # roughness length of snow-covered ground (m) measurement_height_adjustment: false # adjust the temperature measurement height for snow depth snow_cover_fraction_depth_scale: 1.e-6 # snow cover fraction depth scale (m) cryolayers: cold_holding_capacity: 0.05 # cold holding capacity (as a fraction of the layer SWE) and refreezing factor for the cold content approach by Braun (1984) refreezing_factor: 1. # fraction of available energy that is used for building up cold content and refreezing liquid water surface_heat_flux: -2. # surface heat flux for snow-covered conditions (W m-2) transition: old_snow: 200. # new snow -&gt; old snow transition (density, kg m-3) firn: 10 # old snow -&gt; firn transition (calendar month) ice: 900. # firn -&gt; ice transition (density, kg m-3) . “Multilayer” scheme . # Snow parameters snow: model: multilayer # snow scheme (multilayer or cryolayers) thermal_conductivity: 0.24 # snow thermal conductivity (W m-1 K-1) roughness_length: 0.01 # roughness length of snow-covered ground (m) measurement_height_adjustment: false # adjust the temperature measurement height for snow depth snow_cover_fraction_depth_scale: 1.e-6 # snow cover fraction depth scale (m) . General snow and energy-balance related model parameters . # Snow parameters snow: # Albedo parameters albedo: method: snow_age min: 0.55 # minimum snow albedo max: 0.85 # maximum snow albedo firn: 0.4 # firn albedo (constant) ice: 0.2 # ice albedo (constant) cold_snow_decay_timescale: 480 # albedo decay timescale for cold (T &lt; 0 °C) snow (h) melting_snow_decay_timescale: 200 # albedo decay timescale for melting snow (h) decay_timescale_determination_temperature: surface # use surface temperature to distinguish between cold and melting snow refresh_snowfall: 0.5 # snowfall amount for resetting albedo to the maximum value (kg m-2 h-1) refresh_method: binary # binary or continuous # Snow compaction parameters compaction: method: anderson # anderson or empirical # Parameters for method \"empirical\" timescale: 200 # snow compaction timescale (h) max_cold_density: 300 # maximum density for cold (T &lt; 0 °C) snow (kg m-3) max_melting_density: 500 # maximum density for melting snow (kg m-3) # Liquid water content parameters liquid_water_content: method: pore_volume_fraction # pore_volume_fraction or mass_fraction max: 0.03 # maximum liquid water content as a fraction of the total pore volume or mass # Melt parameters melt: method: energy_balance # melt method (energy_balance, temperature_index or enhanced_temperature_index) threshold_temp: 273.15 # threshold temperature for the temperature index methods (K) degree_day_factor: 1.2 # degree day factor for the temperature index methods (kg m-2 d-1 K-1) albedo_factor: 0.1 # albedo factor for the enhanced temperature index method (m2 kg m-2 W-1 d-1) . ",
+    "url": "http://localhost:4000/des/energy#choose-and-configure-method-in-openamundsen",
+    "relUrl": "/des/energy#choose-and-configure-method-in-openamundsen"
+  },"19": {
+    "doc": "Energy and mass balance",
+    "title": "References",
+    "content": ". | Essery, R. (2015). A factorial snowpack model (FSM 1.0). Geoscientific Model Development, 8(12), 3867–3876. https://doi.org/10.5194/gmd-8-3867-2015 . | Strasser, U. (2008). Modelling of the mountain snow cover in the Berchtesgaden National Park, Tech. Rep. 55, Berchtesgaden National Park, Berchtesgaden. | . ",
+    "url": "http://localhost:4000/des/energy#references",
+    "relUrl": "/des/energy#references"
+  },"20": {
     "doc": "Energy and mass balance",
     "title": "Energy and mass balance",
     "content": " ",
     "url": "http://localhost:4000/des/energy",
     "relUrl": "/des/energy"
-  },"16": {
+  },"21": {
     "doc": "Evapotranspiration",
     "title": "Calculating evapotranspiration using the FAO Penman-Monteith method",
-    "content": "under construction . ",
+    "content": "Evapotranspiration from snow-free surfaces is simulated using the FAO Penman-Monteith approach (Allen et al. 1998). ",
     "url": "http://localhost:4000/des/evapotranspiration#calculating-evapotranspiration-using-the-fao-penman-monteith-method",
     "relUrl": "/des/evapotranspiration#calculating-evapotranspiration-using-the-fao-penman-monteith-method"
-  },"17": {
+  },"22": {
+    "doc": "Evapotranspiration",
+    "title": "Choose and configure method in openAMUNDSEN",
+    "content": "evapotranspiration: enabled: true . ",
+    "url": "http://localhost:4000/des/evapotranspiration#choose-and-configure-method-in-openamundsen",
+    "relUrl": "/des/evapotranspiration#choose-and-configure-method-in-openamundsen"
+  },"23": {
+    "doc": "Evapotranspiration",
+    "title": "References",
+    "content": ". | Allen, R. G., Pereira, L. S., Raes, D., and Smith, M.: Crop evapotranspiration – Guidelines for computing crop water requirements, Tech. rep., 1998. | . ",
+    "url": "http://localhost:4000/des/evapotranspiration#references",
+    "relUrl": "/des/evapotranspiration#references"
+  },"24": {
     "doc": "Evapotranspiration",
     "title": "Evapotranspiration",
     "content": " ",
     "url": "http://localhost:4000/des/evapotranspiration",
     "relUrl": "/des/evapotranspiration"
-  },"18": {
+  },"25": {
     "doc": "Example data sets",
     "title": "Example data sets",
     "content": "Example data sets for running the model can be downloaded from https://github.com/openamundsen/openamundsen-examples. ",
     "url": "http://localhost:4000/doc/exampledata",
     "relUrl": "/doc/exampledata"
-  },"19": {
-    "doc": "Glacier model",
-    "title": "Simulating glaciers",
-    "content": "under construction . ",
-    "url": "http://localhost:4000/des/glacier#simulating-glaciers",
-    "relUrl": "/des/glacier#simulating-glaciers"
-  },"20": {
-    "doc": "Glacier model",
-    "title": "Glacier model",
-    "content": " ",
-    "url": "http://localhost:4000/des/glacier",
-    "relUrl": "/des/glacier"
-  },"21": {
+  },"26": {
     "doc": "openAMUNDSEN",
     "title": "openAMUNDSEN",
     "content": "This is home of the modular snow and hydroclimatological modeling framework openAMUNDSEN. You can find the latest model version at GitHub. Check out these pages: . | News | Model description - What’s inside? | Model documentation - How to use the model | Live demo - Try the model online! | Publications | About | . ",
     "url": "http://localhost:4000/",
     "relUrl": "/"
-  },"22": {
+  },"27": {
     "doc": "Input data",
     "title": "Input data",
     "content": "Required input data for running the model is at the least: . | a digital elevation model (DEM) as an Arc/Info ASCII Grid (.asc) file in a projected coordinate reference system, with the same spatial resolution in which the model should be run, | and time series of the meteorological variables air temperature, precipitation, relative humidity, global radiation and wind speed in NetCDF or CSV format. | . Optionally, a region of interest (ROI) file can be additionally supplied defining a subset of the DEM area in which the model should be applied. All model calculations are then only performed for the pixels which are marked as 1 in the ROI file. ",
     "url": "http://localhost:4000/doc/input",
     "relUrl": "/doc/input"
-  },"23": {
+  },"28": {
     "doc": "Input data",
     "title": "Spatial input data",
     "content": "The DEM file must be named dem_{domain}_{resolution}.asc, where {domain} refers to the (freely selectable) name of the respective model domain, and {resolution} to the spatial resolution in m. Accordingly, the ROI file (if available) is named roi_{domain}_{resolution}.asc. ",
     "url": "http://localhost:4000/doc/input#spatial-input-data",
     "relUrl": "/doc/input#spatial-input-data"
-  },"24": {
+  },"29": {
     "doc": "Input data",
     "title": "Meteorological input data",
     "content": "Meteorological input time series must be provided in the same or higher temporal resolution in which the model should be run. For each point location, a CSV or NetCDF file covering the entire time series must be provided. CSV input . When using CSV as input format, the input files should have one or more of the following columns (columns for variables not available can be omitted): . | date: timestamp as a pd.to_datetime-compatible string (e.g. YYYY-MM-DD HH:MM) | temp: air temperature (K) | precip: precipitation sum (kg m-2) | rel_hum: relative humidity (%) | sw_in: global radiation (W m-2) | wind_speed: wind speed (m s-1) | . Additionally, a stations.csv file containing the metadata of the point locations must be provided containing the following columns: . | id: station ID, corresponding to the filename of the respective data file | name: station name | x: longitude or projected x coordinate | y: latitude or projected y coordinate | alt: altitude (m) | . NetCDF input . When using NetCDF as input format, for each station a NetCDF file containing the meteorological time series and the station metadata is read in (i.e., no additional metadata file is required in this case). The NetCDF files are expected to conform to the following schema (unavailable variables can be omitted): . netcdf dummy { dimensions: time = UNLIMITED ; variables: double alt ; alt:_FillValue = NaN ; alt:standard_name = \"surface_altitude\" ; alt:units = \"m\" ; float hurs(time) ; hurs:_FillValue = NaNf ; hurs:standard_name = \"relative_humidity\" ; hurs:units = \"%\" ; double lat ; lat:_FillValue = NaN ; lat:standard_name = \"latitude\" ; lat:units = \"degree_north\" ; double lon ; lon:_FillValue = NaN ; lon:standard_name = \"longitude\" ; lon:units = \"degree_east\" ; float pr(time) ; pr:_FillValue = NaNf ; pr:standard_name = \"precipitation_flux\" ; pr:units = \"kg m-2 s-1\" ; float rsds(time) ; rsds:_FillValue = NaNf ; rsds:standard_name = \"surface_downwelling_shortwave_flux_in_air\" ; rsds:units = \"W m-2\" ; float tas(time) ; tas:_FillValue = NaNf ; tas:standard_name = \"air_temperature\" ; tas:units = \"K\" ; int64 time(time) ; time:standard_name = \"time\" ; time:units = \"hours since 1999-01-01 00:00:00\" ; time:calendar = \"proleptic_gregorian\" ; float wss(time) ; wss:_FillValue = NaNf ; wss:standard_name = \"wind_speed\" ; wss:units = \"m s-1\" ; // global attributes: :Conventions = \"CF-1.6\" ; :station_name = \"dummy\" ; } . ",
     "url": "http://localhost:4000/doc/input#meteorological-input-data",
     "relUrl": "/doc/input#meteorological-input-data"
-  },"25": {
+  },"30": {
     "doc": "Installation",
     "title": "Installation",
     "content": "openAMUNDSEN is a Python (3.7+) package and compatible with all major platforms (Linux, macOS, Windows) and architectures. To help keep its dependencies separated from other Python packages installed on your system, we recommend to install it either from within a conda environment (if you are using the conda package manager) or a standard Python virtual environment. ",
     "url": "http://localhost:4000/doc/installation",
     "relUrl": "/doc/installation"
-  },"26": {
+  },"31": {
     "doc": "Installation",
     "title": "Using conda",
     "content": "When using conda, the recommended steps to install openAMUNDSEN are: . | Install Miniconda (recommended) or Anaconda by downloading and executing the installer for your operating system and architecture. | From the terminal, create a conda environment for openAMUNDSEN by running . conda create --name openamundsen . | Activate the environment by running . conda activate openamundsen . | Install openAMUNDSEN by running . conda install --channel=conda-forge openamundsen . | . ",
     "url": "http://localhost:4000/doc/installation#using-conda",
     "relUrl": "/doc/installation#using-conda"
-  },"27": {
+  },"32": {
     "doc": "Installation",
     "title": "Using virtualenv",
     "content": "If you want to install openAMUNDSEN in a virtual environment instead: . | Create a virtualenv in the current working directory by running . python3 -m venv openamundsen . | Activate the environment by running . source openamundsen/bin/activate . | Install openAMUNDSEN by running . pip install openamundsen . | . ",
     "url": "http://localhost:4000/doc/installation#using-virtualenv",
     "relUrl": "/doc/installation#using-virtualenv"
-  },"28": {
+  },"33": {
     "doc": "Lateral snow redistribution",
     "title": "Simulating of lateral snow redistribution processes",
     "content": " ",
     "url": "http://localhost:4000/des/lateral#simulating-of-lateral-snow-redistribution-processes",
     "relUrl": "/des/lateral#simulating-of-lateral-snow-redistribution-processes"
-  },"29": {
+  },"34": {
     "doc": "Lateral snow redistribution",
-    "title": "Wind-driven",
-    "content": " ",
-    "url": "http://localhost:4000/des/lateral#wind-driven",
-    "relUrl": "/des/lateral#wind-driven"
-  },"30": {
+    "title": "Wind-driven snow redistribution",
+    "content": "A terrain-based parameterization to account for wind-driven snow redistribution is implemented in openAMUNDSEN. It is a static approach based on topographic openness that applies a redistribution factor on the interpolated solid precipitation field. Details are described in Hanzer et al. (2016). ",
+    "url": "http://localhost:4000/des/lateral#wind-driven-snow-redistribution",
+    "relUrl": "/des/lateral#wind-driven-snow-redistribution"
+  },"35": {
     "doc": "Lateral snow redistribution",
-    "title": "Gravitation-driven",
-    "content": "under construction . ",
-    "url": "http://localhost:4000/des/lateral#gravitation-driven",
-    "relUrl": "/des/lateral#gravitation-driven"
-  },"31": {
+    "title": "Choose and configure method in openAMUNDSEN",
+    "content": "precipitation_correction: - method: srf . ",
+    "url": "http://localhost:4000/des/lateral#choose-and-configure-method-in-openamundsen",
+    "relUrl": "/des/lateral#choose-and-configure-method-in-openamundsen"
+  },"36": {
+    "doc": "Lateral snow redistribution",
+    "title": "References",
+    "content": ". | Hanzer, F., Helfricht, K., Marke, T., and Strasser, U.: Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments, The Cryosphere, 10, 1859–1881, https://doi.org/10.5194/tc-10-1859-2016, 2016. | Warscher, M., Strasser, U., Kraller, G., Marke, T., Franz, H., and Kunstmann, H.: Performance of complex snow cover descriptions in a distributed hydrological model system: A case study for the high Alpine terrain of the Berchtesgaden Alps, Water Resour. Res., 49, 2619–2637, 2013. | Yokoyama, R., Shirasawa, M., and Pike, R. J.: Visualizing topography by openness: a new application of image processing to digital elevation models, Photogram. Eng. Remote Sens., 68, 257–266, 2002. | . ",
+    "url": "http://localhost:4000/des/lateral#references",
+    "relUrl": "/des/lateral#references"
+  },"37": {
     "doc": "Lateral snow redistribution",
     "title": "Lateral snow redistribution",
     "content": " ",
     "url": "http://localhost:4000/des/lateral",
     "relUrl": "/des/lateral"
-  },"32": {
+  },"38": {
     "doc": "Processing meteo data",
     "title": "Processing and regionalisation of meteorological input data",
-    "content": "under construction . openAMUNDSEN simulates the processes for each model grid cell individually and is developed to use meteorological forcing from different sources. The standard application is to provide meteorological station data (point measurements). openAMUNDSEN provides a set of procedures suited specifically for topographically complex terrain to regionalise the point data to the model grid. ",
+    "content": "openAMUNDSEN simulates the processes for each model grid cell individually and is developed to use meteorological forcing from different sources. The standard application is to provide meteorological station data (point measurements). An option to directly read and use gridded meteorological data is currently in development. Required meteorological input data: - air temperature - precipitation - global radiation - wind speed - relative humidity Optional meteorological input data: - incoming longwave radiation . ",
     "url": "http://localhost:4000/des/meteo#processing-and-regionalisation-of-meteorological-input-data",
     "relUrl": "/des/meteo#processing-and-regionalisation-of-meteorological-input-data"
-  },"33": {
-    "doc": "Processing meteo data",
-    "title": "Required meteorological input data",
-    "content": ". | air temperature | precipitation | global radiation | wind speed | relative humidity | . ",
-    "url": "http://localhost:4000/des/meteo#required-meteorological-input-data",
-    "relUrl": "/des/meteo#required-meteorological-input-data"
-  },"34": {
-    "doc": "Processing meteo data",
-    "title": "optional input data",
-    "content": ". | incoming longwave radiation | . ",
-    "url": "http://localhost:4000/des/meteo#optional-input-data",
-    "relUrl": "/des/meteo#optional-input-data"
-  },"35": {
+  },"39": {
     "doc": "Processing meteo data",
     "title": "Regionalisation of station data",
-    "content": "Regression-based approach including interpolation of the residuals . For each model time step, . | a regression analysis between observations and the associated station elevation is performed to derive an elevation-dependent trend function. | the derived function is applied upon a digital elevation model to create a trend field for a given meteorological variable (e.g., temperature as a function of elevation). | the residuals for all station locations are calculated by subtracting the calculated regression value for the station elevation from the actual measurement for the current time step. | the residuals from the station locations (raster cells) are then interpolated to the grid using Inverse Distance Weighting (IDW) method. | the interpolated residual field is finally added to the trend field, which results in elevation- and distance-dependent interpolated field ensuring a reproduction of the measured values at the station locations. | . Monthly altitudinal gradients . ",
+    "content": "openAMUNDSEN provides a set of procedures suited specifically for topographically complex terrain to regionalise the point data to the model grid. Regression-based approach including interpolation of the residuals (regression) . For each model time step, . | a regression analysis between observations and the associated station elevation is performed to derive an elevation-dependent trend function. | the derived function is applied upon a digital elevation model to create a trend field for a given meteorological variable (e.g., temperature as a function of elevation). | the residuals for all station locations are calculated by subtracting the calculated regression value for the station elevation from the actual measurement for the current time step. | the residuals from the station locations (raster cells) are interpolated to the grid using Inverse Distance Weighting (IDW) method. | the interpolated residual field is added to the trend field, which results in elevation- and distance-dependent interpolated field ensuring a reproduction of the measured values at the station locations. | . Monthly altitudinal gradients (fixed/fractional) . This method uses prescribed monthly altitudinal gradients either in absolute (fixed) or fractional (fractional) values. Fractional values are useful for precipitation gradients. ",
     "url": "http://localhost:4000/des/meteo#regionalisation-of-station-data",
     "relUrl": "/des/meteo#regionalisation-of-station-data"
-  },"36": {
-    "doc": "Processing meteo data",
-    "title": "Directly use gridded input",
-    "content": "An option to directly read and use gridded meteorological data is currently in development. ",
-    "url": "http://localhost:4000/des/meteo#directly-use-gridded-input",
-    "relUrl": "/des/meteo#directly-use-gridded-input"
-  },"37": {
+  },"40": {
     "doc": "Processing meteo data",
     "title": "Choose and configure method in openAMUNDSEN",
-    "content": " ",
+    "content": "The following example shows the options for choosing and configureing the regionalisation methods for each meteorological variable individually: . meteo: # Spatial interpolation parameters interpolation: temperature: trend_method: fixed # use fixed monthly temperature lapse rates extrapolate: true lapse_rate: # (°C m-1) - -0.0026 # J - -0.0035 # F - -0.0047 # M - -0.0053 # A - -0.0052 # M - -0.0053 # J - -0.0049 # J - -0.0047 # A - -0.0042 # S - -0.0033 # O - -0.0035 # N - -0.0031 # D precipitation: trend_method: fractional # use fixed monthly fractional precipitation gradients extrapolate: true lapse_rate: # (m-1) - 0.00048 # J - 0.00046 # F - 0.00041 # M - 0.00033 # A - 0.00028 # M - 0.00025 # J - 0.00024 # J - 0.00025 # A - 0.00028 # S - 0.00033 # O - 0.00041 # N - 0.00046 # D humidity: trend_method: fixed # use fixed monthly dew point temperature lapse rates extrapolate: true lapse_rate: - -0.0044 # J - -0.0046 # F - -0.0049 # M - -0.0048 # A - -0.0046 # M - -0.0047 # J - -0.0043 # J - -0.0042 # A - -0.0045 # S - -0.0044 # O - -0.0047 # N - -0.0046 # D cloudiness: day_method: clear_sky_fraction # use the ratio of measured vs. potential shortwave radiation to calculate cloudiness night_method: humidity # \"constant\" keep the last cloudiness value of the day during nighttime wind_speed: trend_method: regression extrapolate: false # Precipitation phase determination parameters precipitation_phase: method: wet_bulb_temp # use wet-bulb temperature for precipitation phase determination threshold_temp: 273.65 # threshold temperature (K) in which 50% of precipitation falls as snow temp_range: 1. # temperature range in which mixed precipitation can occur measurement_height: temperature: 2 # temperature measurement height (m) wind: 10 # wind measurement height (m) stability_correction: false # adjust turbulent fluxes for atmospheric stability stability_adjustment_parameter: 5. # adjustment parameter for atmospheric stability correction . ",
     "url": "http://localhost:4000/des/meteo#choose-and-configure-method-in-openamundsen",
     "relUrl": "/des/meteo#choose-and-configure-method-in-openamundsen"
-  },"38": {
+  },"41": {
     "doc": "Processing meteo data",
     "title": "Processing meteo data",
     "content": " ",
     "url": "http://localhost:4000/des/meteo",
     "relUrl": "/des/meteo"
-  },"39": {
+  },"42": {
     "doc": "News",
     "title": "News",
-    "content": "under construction . ",
+    "content": ". | openAMUNDSEN is part of GEWEX-INARCH models &amp; downscaling tools . | Jun 9 2021: Presentation at ESC 2021 . | Apr 28 2021: Presentation at vEGU 2021 . | Apr 1 2020: Release of open source project openAMUNDSEN on GitHub . | . ",
     "url": "http://localhost:4000/news/",
     "relUrl": "/news/"
-  },"40": {
+  },"43": {
     "doc": "Output data",
     "title": "Output data",
-    "content": " ",
+    "content": "The model output is configured in the configuration file. It generally consist of gridded data and/or time series of chosen model variables. The data format, variable names, output frequency, and aggregation functions are fully customizable. File formats are netcdf,geotiff,ascii, and csv. ",
     "url": "http://localhost:4000/doc/output",
     "relUrl": "/doc/output"
-  },"41": {
+  },"44": {
+    "doc": "Output data",
+    "title": "Gridded output data",
+    "content": "The following part of an example configuration file demonstrates the options for gridded output. # Output data configuration output_data: # Configuration for gridded outputs grids: format: ascii # output format (ascii, geotiff or netcdf) variables: # Temperature (monthly mean) - var: meteo.temp # internal variable name name: temp_month # NetCDF output variable name freq: M # write frequency (if not specified, write every timestep) agg: mean # aggregation function (\"sum\", \"mean\" or empty) # Precipitation (monthly sum) - var: meteo.precip # internal variable name name: precip_month # NetCDF output variable name freq: M # write frequency (if not specified, write every timestep) agg: sum # aggregation function (\"sum\", \"mean\" or empty) # SWE (monthly mean) - var: snow.swe name: swe_month freq: M agg: mean # Snow depth (monthly mean) - var: snow.depth name: snowdepth_month freq: M agg: mean # SWE (certain dates) - var: snow.swe name: swe_dates dates: - 2020-04-11 12:00 - 2020-06-02 12:00 # Snow depth (certain dates) - var: snow.depth name: snowdepth_dates dates: - 2020-04-11 12:00 - 2020-06-02 12:00 # Snowmelt (monthly sum) - var: snow.melt name: snowmelt_month freq: M agg: sum # SWE (daily) - var: snow.swe freq: D - var: snow.depth freq: D # Evapotranspiration (monthly sum) - var: evapotranspiration.evapotranspiration freq: M agg: sum . ",
+    "url": "http://localhost:4000/doc/output#gridded-output-data",
+    "relUrl": "/doc/output#gridded-output-data"
+  },"45": {
+    "doc": "Output data",
+    "title": "Time-series (point) output data",
+    "content": "The following part of an example configuration file demonstrates the options for time series output. By default, time series are written at the locations of the meteorological input stations. # Output data configuration output_data: # Time series (point) outputs configuration timeseries: format: csv # output format (csv or netcdf) points: - x: 638139 y: 5181920 - x: 642579 y: 5193069 name: testpoint - x: 637235 y: 5192569 add_default_variables: true variables: - var: evapotranspiration.evapotranspiration . ",
+    "url": "http://localhost:4000/doc/output#time-series-point-output-data",
+    "relUrl": "/doc/output#time-series-point-output-data"
+  },"46": {
     "doc": "Precipitation correction",
     "title": "Correction of precipitation undercatch",
     "content": "Precipitation measurements are vital input for every hydrological model. Particularly measuring solid precipitation in complex alpine terrain is prone to large errors which typically results in an undercatch of precipitation. High wind speeds can cause an undercatch of snowfall up to 50 % (Kochendorfer et al. 2017) when using typical precipitation gauges / pluviometers. ",
     "url": "http://localhost:4000/des/precipitation#correction-of-precipitation-undercatch",
     "relUrl": "/des/precipitation#correction-of-precipitation-undercatch"
-  },"42": {
+  },"47": {
     "doc": "Precipitation correction",
     "title": "Approaches implemented in the model",
-    "content": "Three different approaches are implemented in openAMUNDSEN to correct for the undercatch of solid precipitation: . | Constant snow correction factor | WMO approach (Goodison et al. 1998) | Method proposed by Kochendorfer et al. 2017 | . Constant correction factor for snowfall . A basic method to correct for undercatch is a simple, linear scaling of precipitation. The fracture of snowfall (i.e. solid precipitation) is multiplied by a defined, constant factor (e.g. 1.25 for 25% of added solid precipitation). WMO approach (Goodison et al. 1998) . The WMO approach uses different transfer functions for different type of gauges to scale solid precipitation using measured meteorological conditions (i.e. temperature and/or wind speed). This approach provides functions for following gauge types/setups: . | nipher | tretyakov | us_shielded | us_unshielded | hellmann | . Method proposed by Kochendorfer et al. 2017 . The method introduced by Kochendorfer et al. estimates undercatch regardless of precipitation phase. This method also uses transfer functions for different measuring setups and takes wind speed and temperature into account. In contrast to the ‘WMO’method, the transfer functions were derived from different windshields used for the same gauge (3-wire T200B, Geonor Inc., Oslo, Norway), as well as from a unshielded gauge. Supported measuring setups are: . | unshielded | single alter | double alter | small DFIR | Belfort double-Alter | . ",
+    "content": "Three different approaches are implemented in openAMUNDSEN to correct for the undercatch of solid precipitation: . | Constant snow correction factor | WMO approach (Goodison et al. 1998) | Method proposed by Kochendorfer et al. 2017 | . Constant correction factor for snowfall . A basic method to correct for undercatch is a simple, linear scaling of precipitation. The fracture of snowfall (i.e. solid precipitation) is multiplied by a defined, constant factor (e.g. 1.25 for 25% of added solid precipitation). WMO approach (Goodison et al. 1998) . The WMO approach uses different transfer functions for different type of gauges to scale solid precipitation using measured meteorological conditions (i.e. temperature and/or wind speed). This approach provides functions for following gauge types/setups: . - nipher - tretyakov - us_shielded - us_unshielded - hellmann . Method proposed by Kochendorfer et al. 2017 . The method introduced by Kochendorfer et al. estimates undercatch regardless of precipitation phase. This method also uses transfer functions for different measuring setups and takes wind speed and temperature into account. In contrast to the WMO method, the transfer functions were derived from different windshields used for the same gauge (3-wire T200B, Geonor Inc., Oslo, Norway), as well as from a unshielded gauge. Supported measuring setups are: . - unshielded - single alter - double alter - small DFIR - Belfort double-Alter . ",
     "url": "http://localhost:4000/des/precipitation#approaches-implemented-in-the-model",
     "relUrl": "/des/precipitation#approaches-implemented-in-the-model"
-  },"43": {
+  },"48": {
     "doc": "Precipitation correction",
     "title": "Choose and configure method in openAMUNDSEN",
-    "content": ". | Constant correction factor for snowfall | . # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution precipitation_correction: - method: constant_scf scf: 1.25 . | Method proposed by Kochendorfer et al. 2017 | . # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution precipitation_correction: - method: kochendorfer # use the Kochendorfer et al. (2017) transfer functions gauge: us_un # gauge-specific transfer function to use according to Kochendorfer et al. (2017, Table 3) . | WMO approach (Goodison et al. 1998) | . # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution precipitation_correction: - method: wmo gauge: hellmann . ",
+    "content": ". | Constant correction factor for snowfall | . meteo: # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution precipitation_correction: - method: constant_scf scf: 1.25 . | Method proposed by Kochendorfer et al. 2017 | . meteo: # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution precipitation_correction: - method: kochendorfer # use the Kochendorfer et al. (2017) transfer functions gauge: us_un # gauge-specific transfer function to use according to Kochendorfer et al. (2017, Table 3) . | WMO approach (Goodison et al. 1998) | . meteo: # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution precipitation_correction: - method: wmo gauge: hellmann . ",
     "url": "http://localhost:4000/des/precipitation#choose-and-configure-method-in-openamundsen",
     "relUrl": "/des/precipitation#choose-and-configure-method-in-openamundsen"
-  },"44": {
+  },"49": {
     "doc": "Precipitation correction",
     "title": "References",
     "content": ". | Goodison, B. E., Louie, P., &amp; Yang, D. (1998). WMO solid precipitation measurement intercomparison (World Meteorological Organization, p. 212). World Meteorological Organization. https://library.wmo.int/doc_num.php?explnum_id=9694 . | Kochendorfer, J., Rasmussen, R., Wolff, M., Baker, B., Hall, M. E., Meyers, T., Landolt, S., Jachcik, A., Isaksen, K., Brækkan, R., &amp; Leeper, R. (2017). The quantification and correction of wind-induced precipitation measurement errors. Hydrology and Earth System Sciences, 21(4), 1973–1989. https://doi.org/10.5194/hess-21-1973-2017 . | . ",
     "url": "http://localhost:4000/des/precipitation#references",
     "relUrl": "/des/precipitation#references"
-  },"45": {
+  },"50": {
     "doc": "Precipitation correction",
     "title": "Precipitation correction",
     "content": " ",
     "url": "http://localhost:4000/des/precipitation",
     "relUrl": "/des/precipitation"
-  },"46": {
+  },"51": {
     "doc": "Publications",
     "title": "Publications",
-    "content": "under construction . ",
+    "content": " ",
     "url": "http://localhost:4000/publications/",
     "relUrl": "/publications/"
-  },"47": {
+  },"52": {
+    "doc": "Publications",
+    "title": "Key publications",
+    "content": ". | Strasser, U., Warscher, M., &amp; Liston, G. E. (2011). Modeling snow–canopy processes on an idealized mountain. Journal of Hydrometeorology, 12(4), 663-677, https://doi.org/10.1175/2011JHM1344.1. | Warscher, M., Strasser, U., Kraller, G., Marke, T., Franz, H., and Kunstmann, H.: Performance of complex snow cover descriptions in a distributed hydrological model system: A case study for the high Alpine terrain of the Berchtesgaden Alps, Water Resour. Res., 49, 2619–2637, 2013. | Hanzer, F., Helfricht, K., Marke, T., and Strasser, U.: Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments, The Cryosphere, 10, 1859–1881, https://doi.org/10.5194/tc-10-1859-2016, 2016. | Hanzer, F., Förster, K., Nemec, J. and Strasser, U. (2018): Projected hydrological and cryospheric impacts of 21st century climate change in the Ötztal Alps (Austria) simulated using a physically based approach, Hydrol. Earth Syst. Sci., 22, 1593-1614, https://dx.doi.org/10.5194/hess-22-1593-2018. | Hanzer, F., Carmagnola, C. M., Ebner, P. P., Koch, F., Monti, F., Bavay, M., … &amp; Morin, S. (2020). Simulation of snow management in Alpine ski resorts using three different snow models. Cold Regions Science and Technology, 172, 102995, https://doi.org/10.1016/j.coldregions.2020.102995. | . ",
+    "url": "http://localhost:4000/publications/#key-publications",
+    "relUrl": "/publications/#key-publications"
+  },"53": {
+    "doc": "Publications",
+    "title": "Other publications",
+    "content": "https://www.uibk.ac.at/geographie/mus/pub.html . ",
+    "url": "http://localhost:4000/publications/#other-publications",
+    "relUrl": "/publications/#other-publications"
+  },"54": {
     "doc": "Radiation modeling",
     "title": "Short- and long-wave radiative flux modeling",
-    "content": "under construction . Short- and long-wave radiative fluxes are a key component of the energy balance of the snow cover. Specifically . ",
+    "content": " ",
     "url": "http://localhost:4000/des/radiation#short--and-long-wave-radiative-flux-modeling",
     "relUrl": "/des/radiation#short--and-long-wave-radiative-flux-modeling"
-  },"48": {
+  },"55": {
     "doc": "Radiation modeling",
     "title": "Incoming short-wave radiation",
     "content": "Incoming short-wave radiation strongly varies in time and space depending on terrain position and atmospheric state. To regionalise point measurements, openAMUNDSEN calculates potential global radiation for each grid cell based on position of the sun, orographic shadows, local aspect and slope, atmospheric composition (aerosols, water vapour content), multiple reflections between snow and clouds as well as from snow covered neighbouring slopes. Calculated potential global radiation is then compared to observed global radiation to determine cloud coverage. In the final step, cloud coverage is regionalised using the methods described in Processing meteo data, and actual incoming short-wave radiation is calculated from potential global radiation and cloud coverage for each model grid cell. ",
     "url": "http://localhost:4000/des/radiation#incoming-short-wave-radiation",
     "relUrl": "/des/radiation#incoming-short-wave-radiation"
-  },"49": {
+  },"56": {
     "doc": "Radiation modeling",
     "title": "Outgoing / reflected short-wave radiation",
-    "content": "Reflected short wave radiation depends on surface albedo, i.e. the ability to reflect incoming short-wave radiation. For snow, albedo varies with snow characteristics like grain size, density and snow impurity. In openAMUNDSEN, snow albedo is modelled using an ageing-curve approach (Citation xxx). ",
+    "content": "Reflected short wave radiation depends on surface albedo, i.e. the ability to reflect incoming short-wave radiation. Snow albedo varies with snow characteristics like grain size, density and snow impurity. In openAMUNDSEN, it is modelled using an ageing-curve approach. ",
     "url": "http://localhost:4000/des/radiation#outgoing--reflected-short-wave-radiation",
     "relUrl": "/des/radiation#outgoing--reflected-short-wave-radiation"
-  },"50": {
+  },"57": {
     "doc": "Radiation modeling",
     "title": "Incoming long-wave radiation",
-    "content": "Incoming long-wave radiation from the sky is a function of atmospheric composition and temperature and is determined using the the Stefan-Boltzmann law. Atmospheric emissivity thereby depends on water vapour content in clear sky conditions and cloud cover in overcast situations. Additionally, openAMUNDSEN accounts for long-wave radiation from the neighbouring slopes. ",
+    "content": "Incoming long-wave radiation from the atmosphere is a function of atmospheric composition and temperature and is determined using the the Stefan-Boltzmann law. Atmospheric emissivity thereby depends on water vapour content in clear sky conditions and cloud cover in overcast situations. Additionally, openAMUNDSEN accounts for long-wave radiation from the neighbouring slopes. ",
     "url": "http://localhost:4000/des/radiation#incoming-long-wave-radiation",
     "relUrl": "/des/radiation#incoming-long-wave-radiation"
-  },"51": {
+  },"58": {
     "doc": "Radiation modeling",
     "title": "Outgoing / emitted long-wave radiation",
     "content": "Outgoing long-wave radiation is calculated following the Stephan-Boltzmann law with the emissivity of snow and modelled snow surface temperature. ",
     "url": "http://localhost:4000/des/radiation#outgoing--emitted-long-wave-radiation",
     "relUrl": "/des/radiation#outgoing--emitted-long-wave-radiation"
-  },"52": {
+  },"59": {
+    "doc": "Radiation modeling",
+    "title": "Choose and configure method in openAMUNDSEN",
+    "content": "The radiation model is a mandatory module and is therefore enabled by default. Several model parameters can be adjusted. meteo: # Radiation parameters radiation: snow_emissivity: 0.99 cloud_emissivity: 0.976 rock_emission_factor: 0.01 ozone_layer_thickness: 0.0035 atmospheric_visibility: 25000. single_scattering_albedo: 0.9 clear_sky_albedo: 0.0685 num_shadow_sweeps: 1 . ",
+    "url": "http://localhost:4000/des/radiation#choose-and-configure-method-in-openamundsen",
+    "relUrl": "/des/radiation#choose-and-configure-method-in-openamundsen"
+  },"60": {
     "doc": "Radiation modeling",
     "title": "References",
-    "content": ". | Bernard Bourges. Improvement in solar declination computation. Solar Energy, 1985, 35(4), pp.367-369. | Corripio, J. G. (2002). Modelling the energy balance of high altitude glacierised basins in the Central Andes. PhD thesis, University of Edinburgh. | Corripio, J. G. (2003). Vectorial algebra algorithms for calculating terrain parameters from DEMs and solar radiation modelling in mountainous terrain. International Journal of Geographical Information Science, 17(1), 1–23. https://doi.org/10.1080/13658810210157796 . | J. W. Spencer, “Fourier series representation of the position of the sun” in Search 2 (5), p. 172 (1971) . | Snow Hydrology: Summary Report of the Snow Investigations. Published by the North Pacific Division, Corps of Engineers, U.S. Army, Portland, Oregon, 1956. 437 pages, 70 pages of plates, maps and figs., 27 cm. https://doi.org/10.3189/S0022143000024503 . | Hanzer, F., Helfricht, K., Marke, T., &amp; Strasser, U. (2016). Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments. The Cryosphere, 10(4), 1859–1881. https://doi.org/10.5194/tc-10-1859-2016 . | Essery, R., Morin, S., Lejeune, Y., &amp; B Ménard, C. (2013). A comparison of 1701 snow models using observations from an alpine site. Advances in Water Resources, 55, 131–148. https://doi.org/10.1016/j.advwatres.2012.07.013 . | Dutra, E., Balsamo, G., Viterbo, P., Miranda, P., Beljaars, A., Schär, C., &amp; Elder, K. (2009). New snow scheme in HTESSEL: description and offline validation. ECMWF. https://doi.org/10.21957/98x9mrv1y . | Prata, A. J. (1996). A new long-wave formula for estimating downward clear-sky radiation at the surface. Quarterly Journal of the Royal Meteorological Society, 122(533), 1127–1151. doi:10.1002/qj.49712253306 . | Liston, G. E., &amp; Elder, K. (2006). A Meteorological Distribution System for High-Resolution Terrestrial Modeling (MicroMet). Journal of Hydrometeorology, 7(2), 217–234. https://doi.org/10.1175/JHM486.1 . | Greuell, W., Knap, W. H., &amp; Smeets, P. C. (1997). Elevational changes in meteorological variables along a midlatitude glacier during summer. Journal of Geophysical Research, 102(D22), 25941–25954. https://doi.org/10.1029/97JD02083 . | . ",
+    "content": ". | Corripio, J. G. (2003). Vectorial algebra algorithms for calculating terrain parameters from DEMs and solar radiation modelling in mountainous terrain. International Journal of Geographical Information Science, 17(1), 1–23. https://doi.org/10.1080/13658810210157796 . | Essery, R., Morin, S., Lejeune, Y., &amp; B Ménard, C. (2013). A comparison of 1701 snow models using observations from an alpine site. Advances in Water Resources, 55, 131–148. https://doi.org/10.1016/j.advwatres.2012.07.013 . | Greuell, W., Knap, W. H., &amp; Smeets, P. C. (1997). Elevational changes in meteorological variables along a midlatitude glacier during summer. Journal of Geophysical Research, 102(D22), 25941–25954. https://doi.org/10.1029/97JD02083 . | Hanzer, F., Helfricht, K., Marke, T., &amp; Strasser, U. (2016). Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments. The Cryosphere, 10(4), 1859–1881. https://doi.org/10.5194/tc-10-1859-2016 . | Liston, G. E., &amp; Elder, K. (2006). A Meteorological Distribution System for High-Resolution Terrestrial Modeling (MicroMet). Journal of Hydrometeorology, 7(2), 217–234. https://doi.org/10.1175/JHM486.1 . | Prata, A. J. (1996). A new long-wave formula for estimating downward clear-sky radiation at the surface. Quarterly Journal of the Royal Meteorological Society, 122(533), 1127–1151. doi:10.1002/qj.49712253306 . | . ",
     "url": "http://localhost:4000/des/radiation#references",
     "relUrl": "/des/radiation#references"
-  },"53": {
+  },"61": {
     "doc": "Radiation modeling",
     "title": "Radiation modeling",
     "content": " ",
     "url": "http://localhost:4000/des/radiation",
     "relUrl": "/des/radiation"
-  },"54": {
+  },"62": {
     "doc": "Running the model",
     "title": "Running the model",
     "content": "When the input data and the model configuration have been prepared, a model run can be started either using the openamundsen command line utility (openamundsen config_file.yml), or from within Python using the following syntax: . import openamundsen as oa config = oa.read_config('config_file.yml') # read in configuration file model = oa.OpenAmundsen(config) # create OpenAmundsen object and populate unspecified parameters with default values model.initialize() # read in input data files, initialize state variables etc. model.run() # run the model . ",
     "url": "http://localhost:4000/doc/runningthemodel",
     "relUrl": "/doc/runningthemodel"
-  },"55": {
+  },"63": {
     "doc": "Runoff",
     "title": "Simulating catchment runoff and streamflow",
-    "content": "under construction . ",
+    "content": " ",
     "url": "http://localhost:4000/des/runoff#simulating-catchment-runoff-and-streamflow",
     "relUrl": "/des/runoff#simulating-catchment-runoff-and-streamflow"
-  },"56": {
+  },"64": {
+    "doc": "Runoff",
+    "title": "Distributed catchment runoff",
+    "content": "Pixel runoff in each time step is calculated in the model by calculating and solving the water balance. ",
+    "url": "http://localhost:4000/des/runoff#distributed-catchment-runoff",
+    "relUrl": "/des/runoff#distributed-catchment-runoff"
+  },"65": {
+    "doc": "Runoff",
+    "title": "Runoff concentration",
+    "content": "For runoff concentration, a linear reservoir cascade approach (Nash 1960) following Asztalos et al. (2007) is used. Runoff originating from rainfall and from meltwater released from glaciers and the snowpack is thereby cumulated in each time step and catchment and routed through four parallel linear reservoir cascades for unglacierized areas, bare ice areas, firn-covered areas on glaciers, and snow-covered areas on glaciers. A constant fraction of the inflow into the snow, firn, and ice reservoirs, as well as a fraction of the inflow into the unglacierized reservoir, is diverted into an additional soil reservoir. The parameters of the linear reservoir model are determined by calibration separately for each catchment. (Hanzer et al. 2016) . The runoff concentration module is coupled to openAMUNDSEN as an external python routine which will be published here soon. ",
+    "url": "http://localhost:4000/des/runoff#runoff-concentration",
+    "relUrl": "/des/runoff#runoff-concentration"
+  },"66": {
+    "doc": "Runoff",
+    "title": "References",
+    "content": ". | Asztalos, J., Kirnbauer, R., Escher-Vetter, H., and Braun, L.: A distributed energy balance snowmelt model as a component of a flood forecasting system for the Inn river, in: Alpine Snow Workshop, Munich, 9–17, 2007. | Nash, J. E.: A unit hydrograph study, with particular reference to British catchments, Proc. Inst. Civ. Eng., 17, 249–282, 1960. | Hanzer, F., Helfricht, K., Marke, T., and Strasser, U.: Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments, The Cryosphere, 10, 1859–1881, https://doi.org/10.5194/tc-10-1859-2016, 2016. | . ",
+    "url": "http://localhost:4000/des/runoff#references",
+    "relUrl": "/des/runoff#references"
+  },"67": {
     "doc": "Runoff",
     "title": "Runoff",
     "content": " ",
     "url": "http://localhost:4000/des/runoff",
     "relUrl": "/des/runoff"
-  },"57": {
+  },"68": {
     "doc": "Model structure",
     "title": "General model structure",
-    "content": "under construction . ",
+    "content": "openAMUNDSEN is a fully distributed model, designed primarily for resolving the mass and energy balance of snow and ice covered surfaces in mountain regions. Its modular architecture allows for creating simulations of different complexity and using different methods. The general model structure for a simulation is: . - Model intialization (once) - Read input files - Analyze terrain - Model run (each time step) - Interpolate meteo variables - Calculate derived meteo variables - Calculate irradiance - Calculate snow-vegetation interaction - Calculate surface snow processes - Calculate evapotranspiration - Write results . ",
     "url": "http://localhost:4000/des/structure#general-model-structure",
     "relUrl": "/des/structure#general-model-structure"
-  },"58": {
+  },"69": {
     "doc": "Model structure",
     "title": "Model structure",
     "content": " ",

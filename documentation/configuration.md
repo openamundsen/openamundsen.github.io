@@ -12,6 +12,10 @@ The configuration of an openAMUNDSEN model run can either be read in from a
 [YAML](https://en.wikipedia.org/wiki/YAML) file or be passed directly as a dictionary from within
 Python.
 
+Only few configuration parameters (`domain`, `start_date`, `end_date`, `resolution`, `timezone` and
+the input data directories) are mandatory, for all other parameters default values are used
+otherwise. The different options for the process modules are described at the respective sections in the [model description](/des/). A detailed documentation of all model parameters will be available soon (in the meantime, the available parameters and their default values can be looked up in [configschema.yml](https://github.com/openamundsen/openamundsen/blob/main/openamundsen/data/configschema.yml).
+
 This is an example of a YAML configuration file:
 
 ```yaml
@@ -113,10 +117,3 @@ snow:
     melting_snow_decay_timescale: 200 # albedo decay timescale for melting snow (h)
     refresh_snowfall: 0.5 # snowfall amount for resetting albedo to the maximum value (kg m-2 h-1)
 ```
-
-Only few configuration parameters (`domain`, `start_date`, `end_date`, `resolution`, `timezone` and
-the input data directories) are mandatory, for all other parameters default values are used
-otherwise.
-A detailed documentation of all model parameters will be available soon (in
-the meantime, the available parameters and their default values can be looked up in
-[configschema.yml](./openamundsen/data/configschema.yml)).

@@ -23,52 +23,57 @@ A basic method to correct for undercatch is a simple, linear scaling of precipit
 ### WMO approach (Goodison et al. 1998)
 
 The WMO approach uses different transfer functions for different type of gauges to scale solid precipitation using measured meteorological conditions (i.e. temperature and/or wind speed).
-This approach provides functions for following gauge types/setups:  	
-- nipher
-- tretyakov
-- us_shielded
-- us_unshielded
-- hellmann
+This approach provides functions for following gauge types/setups:
+
+    - nipher
+    - tretyakov
+    - us_shielded
+    - us_unshielded
+    - hellmann
 
 
 ### Method proposed by Kochendorfer et al. 2017
 
-The method introduced by Kochendorfer et al. estimates undercatch regardless of precipitation phase. This method also uses transfer functions for different measuring setups and takes wind speed and temperature into account. In contrast to the 'WMO'method, the transfer functions were derived from different windshields used for the same gauge (3-wire T200B, Geonor Inc., Oslo, Norway), as well as from a unshielded gauge.
+The method introduced by Kochendorfer et al. estimates undercatch regardless of precipitation phase. This method also uses transfer functions for different measuring setups and takes wind speed and temperature into account. In contrast to the WMO method, the transfer functions were derived from different windshields used for the same gauge (3-wire T200B, Geonor Inc., Oslo, Norway), as well as from a unshielded gauge.
 
 Supported measuring setups are:
-- unshielded
-- single alter
-- double alter
-- small DFIR
-- Belfort double-Alter
+
+    - unshielded
+    - single alter
+    - double alter
+    - small DFIR
+    - Belfort double-Alter
 
 ## Choose and configure method in openAMUNDSEN
 
 - Constant correction factor for snowfall
 
 ```yaml
+meteo:
 # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution
-precipitation_correction:
-  - method: constant_scf
-    scf: 1.25
+  precipitation_correction:
+    - method: constant_scf
+      scf: 1.25
 ```  
 
 - Method proposed by Kochendorfer et al. 2017
 
 ```yaml
+meteo:
 # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution
-precipitation_correction:
-  - method: kochendorfer # use the Kochendorfer et al. (2017) transfer functions
-    gauge: us_un # gauge-specific transfer function to use according to Kochendorfer et al. (2017, Table 3)
+  precipitation_correction:
+    - method: kochendorfer # use the Kochendorfer et al. (2017) transfer functions
+      gauge: us_un # gauge-specific transfer function to use according to Kochendorfer et al. (2017, Table 3)
 ```  
 
 - WMO approach (Goodison et al. 1998)
 
 ```yaml
+meteo:
 # Parameters for adjusting precipitation for wind-induced undercatch and snow redistribution
-precipitation_correction:
-  - method: wmo
-    gauge: hellmann
+  precipitation_correction:
+    - method: wmo
+      gauge: hellmann
 ```  
 
 
