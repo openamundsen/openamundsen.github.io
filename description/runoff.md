@@ -24,6 +24,6 @@ The runoff concentration module is coupled to openAMUNDSEN as an external python
 
 - Asztalos, J., Kirnbauer, R., Escher-Vetter, H., and Braun, L.: A distributed energy balance snowmelt model as a component of a flood forecasting system for the Inn river, in: Alpine Snow Workshop, Munich, 9–17, 2007.
 
-- Nash, J. E.: A unit hydrograph study, with particular reference to British catchments, Proc. Inst. Civ. Eng., 17, 249–282, 1960.
-
 - Hanzer, F., Helfricht, K., Marke, T., and Strasser, U.: Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments, The Cryosphere, 10, 1859–1881, https://doi.org/10.5194/tc-10-1859-2016, 2016.
+
+- Nash, J. E.: A unit hydrograph study, with particular reference to British catchments, Proc. Inst. Civ. Eng., 17, 249–282, 1960.
