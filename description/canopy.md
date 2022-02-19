@@ -13,7 +13,7 @@ The processes affecting a snow cover beneath a forest canopy are distinct from t
 
 ## Inside-canopy micrometeorology
 
-Forest canopies generally lead to a reduction of global radiation, precipitation and wind speed, whereas humidity and long-wave radiation are increased and the diurnal temperature cycle is attenuated. In openAMUNDSEN, the micrometeorological conditions for the ground beneath a forest canopy are derived from the interpolated measurements (if all stations are located in the open) by applying a set of modifications for solar and thermal radiation, temperature, humidity and wind speed. Meteorologic conditions inside canopy differ from those in the open. The modifications are based on the effective Leaf Area Index (LAI) of the forest.
+Forest canopies generally lead to a reduction of global radiation, precipitation and wind speed, whereas humidity and long-wave radiation are increased and the diurnal temperature cycle is attenuated. In openAMUNDSEN, the micrometeorological conditions for the ground beneath a forest canopy are derived from the interpolated measurements (if all stations are located in the open) by applying a set of modifications for solar and thermal radiation, temperature, humidity and wind speed. The modifications are based on the effective Leaf Area Index (LAI) of the forest.
 
 ## Snow-forest interaction
 
