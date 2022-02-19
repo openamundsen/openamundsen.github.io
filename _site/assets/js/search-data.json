@@ -1,7 +1,7 @@
 {"0": {
     "doc": "About",
     "title": "About",
-    "content": "The open-source project openAMUNDSEN was born in 2020 with the first release of the model at GitHub. The model builds upon a long history of snow model development dating back to 2001. openAMUNDSEN is licensed under the MIT License. The project is hosted at the research team “Human-environment systems research” Department of Geography, University of Innsbruck. The project is supported by the Department of Geography and the Faculty of Geo- and Atmospheric Sciences of the University of Innsbruck. Contact: Ulrich Strasser . ",
+    "content": "The open-source project openAMUNDSEN was born in 2020 with the first release of the model at GitHub. The model builds upon a long history of snow model development dating back to 2001. openAMUNDSEN is licensed under the MIT License. The project is curated by the research team “Human-environment systems research” Department of Geography, University of Innsbruck. The project is supported by the Department of Geography and the Faculty of Geo- and Atmospheric Sciences of the University of Innsbruck. Contact: Ulrich Strasser . ",
     "url": "http://localhost:4000/about/",
     "relUrl": "/about/"
   },"1": {

@@ -11,7 +11,7 @@ The open-source project openAMUNDSEN was born in 2020 with the first release of 
 
 openAMUNDSEN is licensed under the [MIT License](https://github.com/openamundsen/openamundsen/blob/main/LICENSE).
 
-The project is hosted at the research team "Human-environment systems research" [Department of Geography, University of Innsbruck](https://www.uibk.ac.at/geographie/mus/index.html.en).
+The project is curated by the research team "Human-environment systems research" [Department of Geography, University of Innsbruck](https://www.uibk.ac.at/geographie/mus/index.html.en).
 
 The project is supported by the Department of Geography and the Faculty of Geo- and Atmospheric Sciences of the University of Innsbruck.
 
