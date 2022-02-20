@@ -17,7 +17,7 @@ Forest canopies generally lead to a reduction of global radiation, precipitation
 
 ## Snow-forest interaction
 
-In AMUNDSEN, the processes of snow-forest interaction of interception, i.e. sublimation, unloading by melt, and exceeding the canopy snow–holding capacity are calculated as a function of LAI. Liquid precipitation is assumed to fall through the canopy and is added to the ground snow cover.
+In openAMUNDSEN, the processes of snow-forest interaction of interception, i.e. sublimation, unloading by melt, and exceeding the canopy snow–holding capacity are calculated as a function of LAI. Liquid precipitation is assumed to fall through the canopy and is added to the ground snow cover.
 
 ## Choose and configure method in openAMUNDSEN
 
