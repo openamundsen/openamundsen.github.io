@@ -12,7 +12,7 @@ openAMUNDSEN is a fully distributed model, designed primarily for resolving the 
 
 The general model structure for a simulation is:
 
-    - Model intialization (once)
+    - Model initialization (once)
       - Read input files
       - Analyze terrain
     - Model run (each time step)
