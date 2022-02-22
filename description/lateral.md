@@ -24,8 +24,8 @@ precipitation_correction:
 
 ## References
 
-- Hanzer, F., Helfricht, K., Marke, T. and Strasser, U. (2016): Multi-level spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments. The Cryosphere, 10, 1859-1881, https://doi.org/10.5194/tc-10-1859-2016.
+- Hanzer, F., Helfricht, K., Marke, T. and Strasser, U. (2016): Multi-level spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments. The Cryosphere, 10, 1859-1881, [https://doi.org/10.5194/tc-10-1859-2016](https://doi.org/10.5194/tc-10-1859-2016).
 
-- Warscher, M., Strasser, U., Kraller, G., Marke, T., Franz, H. and Kunstmann, H. (2013): Performance of complex snow cover descriptions in a distributed hydrological model system - A case study for the high alpine terrain of the berchtesgaden alps. WRR 49, 2619-2637, https://doi.org/10.1002/wrcr.20219.
+- Warscher, M., Strasser, U., Kraller, G., Marke, T., Franz, H. and Kunstmann, H. (2013): Performance of complex snow cover descriptions in a distributed hydrological model system - A case study for the high alpine terrain of the berchtesgaden alps. WRR 49, 2619-2637, [https://doi.org/10.1002/wrcr.20219](https://doi.org/10.1002/wrcr.20219).
 
 - Yokoyama, R., Shirasawa, M., and Pike, R. J. (2002): Visualizing topography by openness: a new application of image processing to digital elevation models, Photogram. Eng. Remote Sens., 68, 257–266.
