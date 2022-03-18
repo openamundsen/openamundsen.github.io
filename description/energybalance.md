@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Energy and mass balance
+title: Energy balance
 parent: Description
 nav_order: 5
 permalink: /des/energy
 ---
 
-# Calculating the energy and mass balance of snow and ice
+# Calculating the energy balance of snow and ice
 
 Generally, the energy balance of a snowpack can be expressed as:
 
@@ -112,6 +112,6 @@ snow:
 
 ## References
 
-- Essery, R. (2015). A factorial snowpack model (FSM 1.0). Geoscientific Model Development, 8(12), 3867–3876. https://doi.org/10.5194/gmd-8-3867-2015
+- Essery, R. (2015): A factorial snowpack model (FSM 1.0). Geoscientific Model Development, 8(12), 3867–3876, [https://doi.org/10.5194/gmd-8-3867-2015](https://doi.org/10.5194/gmd-8-3867-2015).
 
-- Strasser, U. (2008). Modelling of the mountain snow cover in the Berchtesgaden National Park, Tech. Rep. 55, Berchtesgaden National Park, Berchtesgaden.
+- Strasser, U. (2008): Modelling of the mountain snow cover in the Berchtesgaden National Park, Tech. Rep. 55, Berchtesgaden National Park, Berchtesgaden.

@@ -42,14 +42,14 @@ meteo:
 
 ## References
 
-- Corripio, J. G. (2003). Vectorial algebra algorithms for calculating	terrain parameters from DEMs and solar radiation modelling in mountainous terrain. International Journal of Geographical Information Science, 17(1), 1–23. https://doi.org/10.1080/13658810210157796
+- Corripio, J. G. (2003): Vectorial algebra algorithms for calculating terrain parameters from DEMs and solar radiation modelling in mountainous terrain. International Journal of Geographical Information Science, 17(1), 1–23, [https://doi.org/10.1080/713811744](https://doi.org/10.1080/713811744).
 
-- Essery, R., Morin, S., Lejeune, Y., & B Ménard, C. (2013). A comparison of 1701 snow models using observations from an alpine site. Advances in Water Resources, 55, 131–148. https://doi.org/10.1016/j.advwatres.2012.07.013
+- Essery, R., Morin, S., Lejeune, Y., and B Ménard, C. (2013): A comparison of 1701 snow models using observations from an alpine site. Advances in Water Resources, 55, 131–148. [https://doi.org/10.1016/j.advwatres.2012.07.013](https://doi.org/10.1016/j.advwatres.2012.07.013).
 
-- Greuell, W., Knap, W. H., & Smeets, P. C. (1997). Elevational changes in meteorological variables along a midlatitude glacier during summer. Journal of Geophysical Research, 102(D22), 25941–25954.	https://doi.org/10.1029/97JD02083
+- Greuell, W., Knap, W. H., and Smeets, P. C. (1997): Elevational changes in meteorological variables along a midlatitude glacier during summer. Journal of Geophysical Research, 102(D22), 25941–25954, [https://doi.org/10.1029/97JD02083](https://doi.org/10.1029/97JD02083).
 
-- Hanzer, F., Helfricht, K., Marke, T., & Strasser, U. (2016). Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments. The Cryosphere, 10(4), 1859–1881. https://doi.org/10.5194/tc-10-1859-2016
+- Hanzer, F., Helfricht, K., Marke, T., and Strasser, U. (2016): Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments. The Cryosphere, 10(4), 1859–1881, [https://doi.org/10.5194/tc-10-1859-2016](https://doi.org/10.5194/tc-10-1859-2016).
 
-- Liston, G. E., & Elder, K. (2006). A Meteorological Distribution System for High-Resolution Terrestrial Modeling (MicroMet). Journal of Hydrometeorology, 7(2), 217–234. https://doi.org/10.1175/JHM486.1
+- Liston, G. E., and Elder, K. (2006): A Meteorological Distribution System for High-Resolution Terrestrial Modeling (MicroMet). Journal of Hydrometeorology, 7(2), 217–234, [https://doi.org/10.1175/JHM486.1](https://doi.org/10.1175/JHM486.1).
 
-- Prata, A. J. (1996). A new long-wave formula for estimating downward clear-sky radiation at the surface. Quarterly Journal of the Royal Meteorological Society, 122(533), 1127–1151. doi:10.1002/qj.49712253306
+- Prata, A. J. (1996). A new long-wave formula for estimating downward clear-sky radiation at the surface. Quarterly Journal of the Royal Meteorological Society, 122(533), 1127–1151, [https://doi.org/10.1002/qj.49712253306](https://doi.org/10.1002/qj.49712253306).

@@ -19,4 +19,4 @@ evapotranspiration:
 ```
 
 ## References
-- Allen, R. G., Pereira, L. S., Raes, D., and Smith, M.: Crop evapotranspiration – Guidelines for computing crop water requirements, Tech. rep., 1998.
+- Allen, R. G., Pereira, L. S., Raes, D., and Smith, M. (1998): Crop evapotranspiration – Guidelines for computing crop water requirements, Tech. rep., [https://www.fao.org/3/x0490e/x0490e00.htm](https://www.fao.org/3/x0490e/x0490e00.htm).

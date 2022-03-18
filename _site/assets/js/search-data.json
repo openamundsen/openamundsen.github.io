@@ -13,13 +13,13 @@
   },"2": {
     "doc": "Inside canopy",
     "title": "Inside-canopy micrometeorology",
-    "content": "Forest canopies generally lead to a reduction of global radiation, precipitation and wind speed, whereas humidity and long-wave radiation are increased and the diurnal temperature cycle is attenuated. In openAMUNDSEN, the micrometeorological conditions for the ground beneath a forest canopy are derived from the interpolated measurements (if all stations are located in the open) by applying a set of modifications for solar and thermal radiation, temperature, humidity and wind speed. Meteorologic conditions inside canopy differ from those in the open. The modifications are based on the effective Leaf Area Index (LAI) of the forest. ",
+    "content": "Forest canopies generally lead to a reduction of global radiation, precipitation and wind speed, whereas humidity and long-wave radiation are increased and the diurnal temperature cycle is attenuated. In openAMUNDSEN, the micrometeorological conditions for the ground beneath a forest canopy are derived from the interpolated measurements (if all stations are located in the open) by applying a set of modifications for solar and thermal radiation, temperature, humidity and wind speed. The modifications are based on the effective Leaf Area Index (LAI) of the forest. ",
     "url": "http://localhost:4000/des/canopy#inside-canopy-micrometeorology",
     "relUrl": "/des/canopy#inside-canopy-micrometeorology"
   },"3": {
     "doc": "Inside canopy",
     "title": "Snow-forest interaction",
-    "content": "In AMUNDSEN, the processes of snow-forest interaction of interception, i.e. sublimation, unloading by melt, and exceeding the canopy snow–holding capacity are calculated as a function of LAI. Liquid precipitation is assumed to fall through the canopy and is added to the ground snow cover. ",
+    "content": "In openAMUNDSEN, the processes of snow-forest interaction of interception, i.e. sublimation, unloading by melt, and exceeding the canopy snow–holding capacity are calculated as a function of LAI. Liquid precipitation is assumed to fall through the canopy and is added to the ground snow cover. ",
     "url": "http://localhost:4000/des/canopy#snow-forest-interaction",
     "relUrl": "/des/canopy#snow-forest-interaction"
   },"4": {
@@ -31,7 +31,7 @@
   },"5": {
     "doc": "Inside canopy",
     "title": "References",
-    "content": ". | Strasser, U., Warscher, M., &amp; Liston, G. E. (2011). Modeling Snow-Canopy Processes on an Idealized Mountain. Journal of Hydrometeorology, 12(4), 663–677. https://doi.org/10.1175/2011JHM1344.1 | . ",
+    "content": ". | Strasser, U., Warscher, M., and Liston, G. E. (2011): Modeling Snow-Canopy Processes on an Idealized Mountain. Journal of Hydrometeorology, 12(4), 663–677, https://doi.org/10.1175/2011JHM1344.1. | . ",
     "url": "http://localhost:4000/des/canopy#references",
     "relUrl": "/des/canopy#references"
   },"6": {
@@ -95,32 +95,32 @@
     "url": "http://localhost:4000/doc/",
     "relUrl": "/doc/"
   },"16": {
-    "doc": "Energy and mass balance",
-    "title": "Calculating the energy and mass balance of snow and ice",
+    "doc": "Energy balance",
+    "title": "Calculating the energy balance of snow and ice",
     "content": "Generally, the energy balance of a snowpack can be expressed as: . Q + H + E + P + G = C + M Q = net radiation H = sensible heat flux E = latent heat flux P = advective heat flux caused by precipitation G = ground heat flux C = energy transferred to temperature changes within the snowpack M = energy transferred to snow melt . ",
-    "url": "http://localhost:4000/des/energy#calculating-the-energy-and-mass-balance-of-snow-and-ice",
-    "relUrl": "/des/energy#calculating-the-energy-and-mass-balance-of-snow-and-ice"
+    "url": "http://localhost:4000/des/energy#calculating-the-energy-balance-of-snow-and-ice",
+    "relUrl": "/des/energy#calculating-the-energy-balance-of-snow-and-ice"
   },"17": {
-    "doc": "Energy and mass balance",
+    "doc": "Energy balance",
     "title": "Energy balance in openAMUNDSEN",
     "content": "Two different layering schemes (“Cryolayers” / “Multilayer”) are implemented in the model. The energy balance calculation depends on the selected layering scheme. Snow layering scheme “Cryolayers” . “Cryolayers” is a bulk-layering scheme using separate layers for new snow, old snow, firn and ice. When using this scheme, the snowpack is taken as one layer to solve its energy balance. If air temperature rises above 0° C the model assumes that melting processes are possible and checks for a positive surface energy balance. If the surface energy balance is positive, melting processes occur where the melt amount is determined by the simulated available excess energy. If the air temperature is below 0°C, an iterative procedure to compute the snow surface temperature needed for closing the energy balance is applied. In this procedure, the snow surface temperature is altered until the residual energy balance passes zero. Snow layering scheme “Multilayer” . “Multilayer” is a scheme that divides the snowpack in distinct layers to calculate heat fluxes within the snow pack (Essery 2015). To solve the energy balance within this scheme, in a first step, melt is assumed to be 0 for the surface temperature change of every timestep. If the energy balance results in a surface temperature above 0° C, snow is melting. The temperature increment has to be recalculated assuming that all of the snow melts. If this results in a surface temperature below 0°C, snow melts only partially during the timestep (Essery 2015). ",
     "url": "http://localhost:4000/des/energy#energy-balance-in-openamundsen",
     "relUrl": "/des/energy#energy-balance-in-openamundsen"
   },"18": {
-    "doc": "Energy and mass balance",
+    "doc": "Energy balance",
     "title": "Choose and configure method in openAMUNDSEN",
     "content": "“Cryolayers” scheme . # Snow parameters snow: model: cryolayers # snow scheme (multilayer or cryolayers) thermal_conductivity: 0.24 # snow thermal conductivity (W m-1 K-1) roughness_length: 0.01 # roughness length of snow-covered ground (m) measurement_height_adjustment: false # adjust the temperature measurement height for snow depth snow_cover_fraction_depth_scale: 1.e-6 # snow cover fraction depth scale (m) cryolayers: cold_holding_capacity: 0.05 # cold holding capacity (as a fraction of the layer SWE) and refreezing factor for the cold content approach by Braun (1984) refreezing_factor: 1. # fraction of available energy that is used for building up cold content and refreezing liquid water surface_heat_flux: -2. # surface heat flux for snow-covered conditions (W m-2) transition: old_snow: 200. # new snow -&gt; old snow transition (density, kg m-3) firn: 10 # old snow -&gt; firn transition (calendar month) ice: 900. # firn -&gt; ice transition (density, kg m-3) . “Multilayer” scheme . # Snow parameters snow: model: multilayer # snow scheme (multilayer or cryolayers) thermal_conductivity: 0.24 # snow thermal conductivity (W m-1 K-1) roughness_length: 0.01 # roughness length of snow-covered ground (m) measurement_height_adjustment: false # adjust the temperature measurement height for snow depth snow_cover_fraction_depth_scale: 1.e-6 # snow cover fraction depth scale (m) . General snow and energy-balance related model parameters . # Snow parameters snow: # Albedo parameters albedo: method: snow_age min: 0.55 # minimum snow albedo max: 0.85 # maximum snow albedo firn: 0.4 # firn albedo (constant) ice: 0.2 # ice albedo (constant) cold_snow_decay_timescale: 480 # albedo decay timescale for cold (T &lt; 0 °C) snow (h) melting_snow_decay_timescale: 200 # albedo decay timescale for melting snow (h) decay_timescale_determination_temperature: surface # use surface temperature to distinguish between cold and melting snow refresh_snowfall: 0.5 # snowfall amount for resetting albedo to the maximum value (kg m-2 h-1) refresh_method: binary # binary or continuous # Snow compaction parameters compaction: method: anderson # anderson or empirical # Parameters for method \"empirical\" timescale: 200 # snow compaction timescale (h) max_cold_density: 300 # maximum density for cold (T &lt; 0 °C) snow (kg m-3) max_melting_density: 500 # maximum density for melting snow (kg m-3) # Liquid water content parameters liquid_water_content: method: pore_volume_fraction # pore_volume_fraction or mass_fraction max: 0.03 # maximum liquid water content as a fraction of the total pore volume or mass # Melt parameters melt: method: energy_balance # melt method (energy_balance, temperature_index or enhanced_temperature_index) threshold_temp: 273.15 # threshold temperature for the temperature index methods (K) degree_day_factor: 1.2 # degree day factor for the temperature index methods (kg m-2 d-1 K-1) albedo_factor: 0.1 # albedo factor for the enhanced temperature index method (m2 kg m-2 W-1 d-1) . ",
     "url": "http://localhost:4000/des/energy#choose-and-configure-method-in-openamundsen",
     "relUrl": "/des/energy#choose-and-configure-method-in-openamundsen"
   },"19": {
-    "doc": "Energy and mass balance",
+    "doc": "Energy balance",
     "title": "References",
-    "content": ". | Essery, R. (2015). A factorial snowpack model (FSM 1.0). Geoscientific Model Development, 8(12), 3867–3876. https://doi.org/10.5194/gmd-8-3867-2015 . | Strasser, U. (2008). Modelling of the mountain snow cover in the Berchtesgaden National Park, Tech. Rep. 55, Berchtesgaden National Park, Berchtesgaden. | . ",
+    "content": ". | Essery, R. (2015): A factorial snowpack model (FSM 1.0). Geoscientific Model Development, 8(12), 3867–3876, https://doi.org/10.5194/gmd-8-3867-2015. | Strasser, U. (2008): Modelling of the mountain snow cover in the Berchtesgaden National Park, Tech. Rep. 55, Berchtesgaden National Park, Berchtesgaden. | . ",
     "url": "http://localhost:4000/des/energy#references",
     "relUrl": "/des/energy#references"
   },"20": {
-    "doc": "Energy and mass balance",
-    "title": "Energy and mass balance",
+    "doc": "Energy balance",
+    "title": "Energy balance",
     "content": " ",
     "url": "http://localhost:4000/des/energy",
     "relUrl": "/des/energy"
@@ -139,7 +139,7 @@
   },"23": {
     "doc": "Evapotranspiration",
     "title": "References",
-    "content": ". | Allen, R. G., Pereira, L. S., Raes, D., and Smith, M.: Crop evapotranspiration – Guidelines for computing crop water requirements, Tech. rep., 1998. | . ",
+    "content": ". | Allen, R. G., Pereira, L. S., Raes, D., and Smith, M. (1998): Crop evapotranspiration – Guidelines for computing crop water requirements, Tech. rep., https://www.fao.org/3/x0490e/x0490e00.htm. | . ",
     "url": "http://localhost:4000/des/evapotranspiration#references",
     "relUrl": "/des/evapotranspiration#references"
   },"24": {
@@ -217,7 +217,7 @@
   },"36": {
     "doc": "Lateral snow redistribution",
     "title": "References",
-    "content": ". | Hanzer, F., Helfricht, K., Marke, T., and Strasser, U.: Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments, The Cryosphere, 10, 1859–1881, https://doi.org/10.5194/tc-10-1859-2016, 2016. | Warscher, M., Strasser, U., Kraller, G., Marke, T., Franz, H., and Kunstmann, H.: Performance of complex snow cover descriptions in a distributed hydrological model system: A case study for the high Alpine terrain of the Berchtesgaden Alps, Water Resour. Res., 49, 2619–2637, 2013. | Yokoyama, R., Shirasawa, M., and Pike, R. J.: Visualizing topography by openness: a new application of image processing to digital elevation models, Photogram. Eng. Remote Sens., 68, 257–266, 2002. | . ",
+    "content": ". | Hanzer, F., Helfricht, K., Marke, T. and Strasser, U. (2016): Multi-level spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments. The Cryosphere, 10, 1859-1881, https://doi.org/10.5194/tc-10-1859-2016. | Warscher, M., Strasser, U., Kraller, G., Marke, T., Franz, H. and Kunstmann, H. (2013): Performance of complex snow cover descriptions in a distributed hydrological model system - A case study for the high alpine terrain of the berchtesgaden alps. WRR 49, 2619-2637, https://doi.org/10.1002/wrcr.20219. | Yokoyama, R., Shirasawa, M., and Pike, R. J. (2002): Visualizing topography by openness: a new application of image processing to digital elevation models, Photogram. Eng. Remote Sens., 68, 257–266. | . ",
     "url": "http://localhost:4000/des/lateral#references",
     "relUrl": "/des/lateral#references"
   },"37": {
@@ -295,7 +295,7 @@
   },"49": {
     "doc": "Precipitation correction",
     "title": "References",
-    "content": ". | Goodison, B. E., Louie, P., &amp; Yang, D. (1998). WMO solid precipitation measurement intercomparison (World Meteorological Organization, p. 212). World Meteorological Organization. https://library.wmo.int/doc_num.php?explnum_id=9694 . | Kochendorfer, J., Rasmussen, R., Wolff, M., Baker, B., Hall, M. E., Meyers, T., Landolt, S., Jachcik, A., Isaksen, K., Brækkan, R., &amp; Leeper, R. (2017). The quantification and correction of wind-induced precipitation measurement errors. Hydrology and Earth System Sciences, 21(4), 1973–1989. https://doi.org/10.5194/hess-21-1973-2017 . | . ",
+    "content": ". | Goodison, B. E., Louie, P., and Yang, D. (1998): WMO solid precipitation measurement intercomparison (World Meteorological Organization, p. 212). World Meteorological Organization, https://library.wmo.int/doc_num.php?explnum_id=9694. | Kochendorfer, J., Rasmussen, R., Wolff, M., Baker, B., Hall, M. E., Meyers, T., Landolt, S., Jachcik, A., Isaksen, K., Brækkan, R., and Leeper, R. (2017): The quantification and correction of wind-induced precipitation measurement errors. Hydrology and Earth System Sciences, 21(4), 1973–1989, https://doi.org/10.5194/hess-21-1973-2017. | . ",
     "url": "http://localhost:4000/des/precipitation#references",
     "relUrl": "/des/precipitation#references"
   },"50": {
@@ -313,7 +313,7 @@
   },"52": {
     "doc": "Publications",
     "title": "Key publications",
-    "content": ". | Strasser, U., Warscher, M., &amp; Liston, G. E. (2011). Modeling snow–canopy processes on an idealized mountain. Journal of Hydrometeorology, 12(4), 663-677, https://doi.org/10.1175/2011JHM1344.1. | Warscher, M., Strasser, U., Kraller, G., Marke, T., Franz, H., and Kunstmann, H.: Performance of complex snow cover descriptions in a distributed hydrological model system: A case study for the high Alpine terrain of the Berchtesgaden Alps, Water Resour. Res., 49, 2619–2637, 2013. | Hanzer, F., Helfricht, K., Marke, T., and Strasser, U.: Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments, The Cryosphere, 10, 1859–1881, https://doi.org/10.5194/tc-10-1859-2016, 2016. | Hanzer, F., Förster, K., Nemec, J. and Strasser, U. (2018): Projected hydrological and cryospheric impacts of 21st century climate change in the Ötztal Alps (Austria) simulated using a physically based approach, Hydrol. Earth Syst. Sci., 22, 1593-1614, https://dx.doi.org/10.5194/hess-22-1593-2018. | Hanzer, F., Carmagnola, C. M., Ebner, P. P., Koch, F., Monti, F., Bavay, M., … &amp; Morin, S. (2020). Simulation of snow management in Alpine ski resorts using three different snow models. Cold Regions Science and Technology, 172, 102995, https://doi.org/10.1016/j.coldregions.2020.102995. | . ",
+    "content": ". | Hanzer, F., Förster, K., Nemec, J. and Strasser, U. (2018): Projected hydrological and cryospheric impacts of 21st century climate change in the Ötztal Alps (Austria) simulated using a physically based approach. Hydrol. Earth Syst. Sci., 22, 1593-1614, https://dx.doi.org/10.5194/hess-22-1593-2018. | Hanzer, F., Helfricht, K., Marke, T. and Strasser, U. (2016): Multi-level spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments. The Cryosphere, 10, 1859-1881, https://doi.org/10.5194/tc-10-1859-2016. | Warscher, M., Strasser, U., Kraller, G., Marke, T., Franz, H. and Kunstmann, H. (2013): Performance of complex snow cover descriptions in a distributed hydrological model system - A case study for the high alpine terrain of the berchtesgaden alps. WRR 49, 2619-2637, https://doi.org/10.1002/wrcr.20219. | Strasser, U., Warscher, M. and Liston, G.E. (2011): Modelling snow-canopy processes on an idealized mountain. J. Hydrometeor. Vol. 12, No. 4, 663-677, https://doi.org/10.1175/2011JHM1344.1. | Strasser, U., Bernhardt, M., Weber, M., Liston, G.E. and Mauser, W. (2008): Is snow sublimation important in the alpine water balance? The Cryosphere, 2, 53-66, https://doi.org/10.5194/tc-2-53-2008. | Strasser, U., Corripio, J., Brock, B., Pellicciotti, F., Burlando, P. and Funk, M. (2004): Spatial and Temporal Variability of Meteorological Variables at Haut Glacier d’Arolla (Switzerland) During the Ablation Season 2001: Measurements and Simulations. J. Geophys. Res., Vol. 109, D03103, https://doi.org/10.1029/2003JD003973. | Strasser, U. (2008): Die Modellierung der Gebirgsschneedecke im Nationalpark Berchtesgaden. Modelling of the mountain snow cover in the Berchtesgaden National Park. Berchtesgaden National Park research report, Nr. 55, Berchtesgaden. ISSN 0172-0023. ISBN 978-3-922325-62-8. EAN-Code 9783922325628. | . ",
     "url": "http://localhost:4000/publications/#key-publications",
     "relUrl": "/publications/#key-publications"
   },"53": {
@@ -361,7 +361,7 @@
   },"60": {
     "doc": "Radiation modeling",
     "title": "References",
-    "content": ". | Corripio, J. G. (2003). Vectorial algebra algorithms for calculating terrain parameters from DEMs and solar radiation modelling in mountainous terrain. International Journal of Geographical Information Science, 17(1), 1–23. https://doi.org/10.1080/13658810210157796 . | Essery, R., Morin, S., Lejeune, Y., &amp; B Ménard, C. (2013). A comparison of 1701 snow models using observations from an alpine site. Advances in Water Resources, 55, 131–148. https://doi.org/10.1016/j.advwatres.2012.07.013 . | Greuell, W., Knap, W. H., &amp; Smeets, P. C. (1997). Elevational changes in meteorological variables along a midlatitude glacier during summer. Journal of Geophysical Research, 102(D22), 25941–25954. https://doi.org/10.1029/97JD02083 . | Hanzer, F., Helfricht, K., Marke, T., &amp; Strasser, U. (2016). Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments. The Cryosphere, 10(4), 1859–1881. https://doi.org/10.5194/tc-10-1859-2016 . | Liston, G. E., &amp; Elder, K. (2006). A Meteorological Distribution System for High-Resolution Terrestrial Modeling (MicroMet). Journal of Hydrometeorology, 7(2), 217–234. https://doi.org/10.1175/JHM486.1 . | Prata, A. J. (1996). A new long-wave formula for estimating downward clear-sky radiation at the surface. Quarterly Journal of the Royal Meteorological Society, 122(533), 1127–1151. doi:10.1002/qj.49712253306 . | . ",
+    "content": ". | Corripio, J. G. (2003): Vectorial algebra algorithms for calculating terrain parameters from DEMs and solar radiation modelling in mountainous terrain. International Journal of Geographical Information Science, 17(1), 1–23, https://doi.org/10.1080/713811744. | Essery, R., Morin, S., Lejeune, Y., and B Ménard, C. (2013): A comparison of 1701 snow models using observations from an alpine site. Advances in Water Resources, 55, 131–148. https://doi.org/10.1016/j.advwatres.2012.07.013. | Greuell, W., Knap, W. H., and Smeets, P. C. (1997): Elevational changes in meteorological variables along a midlatitude glacier during summer. Journal of Geophysical Research, 102(D22), 25941–25954, https://doi.org/10.1029/97JD02083. | Hanzer, F., Helfricht, K., Marke, T., and Strasser, U. (2016): Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments. The Cryosphere, 10(4), 1859–1881, https://doi.org/10.5194/tc-10-1859-2016. | Liston, G. E., and Elder, K. (2006): A Meteorological Distribution System for High-Resolution Terrestrial Modeling (MicroMet). Journal of Hydrometeorology, 7(2), 217–234, https://doi.org/10.1175/JHM486.1. | Prata, A. J. (1996). A new long-wave formula for estimating downward clear-sky radiation at the surface. Quarterly Journal of the Royal Meteorological Society, 122(533), 1127–1151, https://doi.org/10.1002/qj.49712253306. | . ",
     "url": "http://localhost:4000/des/radiation#references",
     "relUrl": "/des/radiation#references"
   },"61": {
@@ -397,7 +397,7 @@
   },"66": {
     "doc": "Runoff",
     "title": "References",
-    "content": ". | Asztalos, J., Kirnbauer, R., Escher-Vetter, H., and Braun, L.: A distributed energy balance snowmelt model as a component of a flood forecasting system for the Inn river, in: Alpine Snow Workshop, Munich, 9–17, 2007. | Hanzer, F., Helfricht, K., Marke, T., and Strasser, U.: Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments, The Cryosphere, 10, 1859–1881, https://doi.org/10.5194/tc-10-1859-2016, 2016. | Nash, J. E.: A unit hydrograph study, with particular reference to British catchments, Proc. Inst. Civ. Eng., 17, 249–282, 1960. | . ",
+    "content": ". | Asztalos, J., Kirnbauer, R., Escher-Vetter, H., and Braun, L. (2007): A distributed energy balance snowmelt model as a component of a flood forecasting system for the Inn river, in: Alpine Snow Workshop, Munich, 9–17. | Hanzer, F., Helfricht, K., Marke, T., and Strasser, U. (2016): Multilevel spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments, The Cryosphere, 10, 1859–1881, https://doi.org/10.5194/tc-10-1859-2016. | Nash, J. E. (1960): A unit hydrograph study, with particular reference to British catchments, Proc. Inst. Civ. Eng., 17, 249–282, https://doi.org/10.1680/iicep.1960.11649. | . ",
     "url": "http://localhost:4000/des/runoff#references",
     "relUrl": "/des/runoff#references"
   },"67": {
@@ -409,7 +409,7 @@
   },"68": {
     "doc": "Model structure",
     "title": "General model structure",
-    "content": "openAMUNDSEN is a fully distributed model, designed primarily for resolving the mass and energy balance of snow and ice covered surfaces in mountain regions. Its modular architecture allows for creating simulations of different complexity and using different methods. The general model structure for a simulation is: . - Model intialization (once) - Read input files - Analyze terrain - Model run (each time step) - Interpolate meteo variables - Calculate derived meteo variables - Calculate irradiance - Calculate snow-vegetation interaction - Calculate surface snow processes - Calculate evapotranspiration - Write results . ",
+    "content": "openAMUNDSEN is a fully distributed model, designed primarily for resolving the mass and energy balance of snow and ice covered surfaces in mountain regions. Its modular architecture allows for creating simulations of different complexity and using different methods. The general model structure for a simulation is: . - Model initialization (once) - Read input files - Analyze terrain - Model run (each time step) - Interpolate meteo variables - Calculate derived meteo variables - Calculate irradiance - Calculate snow-vegetation interaction - Calculate surface snow processes - Calculate evapotranspiration - Write results . ",
     "url": "http://localhost:4000/des/structure#general-model-structure",
     "relUrl": "/des/structure#general-model-structure"
   },"69": {

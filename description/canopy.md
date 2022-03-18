@@ -27,4 +27,4 @@ canopy:
 ```
 
 ## References
-- Strasser, U., Warscher, M., & Liston, G. E. (2011). Modeling Snow-Canopy Processes on an Idealized Mountain. Journal of Hydrometeorology, 12(4), 663–677. [https://doi.org/10.1175/2011JHM1344.1](https://doi.org/10.1175/2011JHM1344.1)
+- Strasser, U., Warscher, M., and Liston, G. E. (2011): Modeling Snow-Canopy Processes on an Idealized Mountain. Journal of Hydrometeorology, 12(4), 663–677, [https://doi.org/10.1175/2011JHM1344.1](https://doi.org/10.1175/2011JHM1344.1).

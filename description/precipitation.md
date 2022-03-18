@@ -79,6 +79,6 @@ meteo:
 
 ## References
 
-- Goodison, B. E., Louie, P., & Yang, D. (1998). WMO solid precipitation measurement intercomparison (World Meteorological Organization, p. 212). World Meteorological Organization. [https://library.wmo.int/doc_num.php?explnum_id=9694](https://library.wmo.int/doc_num.php?explnum_id=9694)
+- Goodison, B. E., Louie, P., and Yang, D. (1998): WMO solid precipitation measurement intercomparison (World Meteorological Organization, p. 212). World Meteorological Organization, [https://library.wmo.int/doc_num.php?explnum_id=9694](https://library.wmo.int/doc_num.php?explnum_id=9694).
 
-- Kochendorfer, J., Rasmussen, R., Wolff, M., Baker, B., Hall, M. E., Meyers, T., Landolt, S., Jachcik, A., Isaksen, K., Brækkan, R., & Leeper, R. (2017). The quantification and correction of wind-induced precipitation measurement errors. Hydrology and Earth System Sciences, 21(4), 1973–1989. [https://doi.org/10.5194/hess-21-1973-2017](https://doi.org/10.5194/hess-21-1973-2017)
+- Kochendorfer, J., Rasmussen, R., Wolff, M., Baker, B., Hall, M. E., Meyers, T., Landolt, S., Jachcik, A., Isaksen, K., Brækkan, R., and Leeper, R. (2017): The quantification and correction of wind-induced precipitation measurement errors. Hydrology and Earth System Sciences, 21(4), 1973–1989, [https://doi.org/10.5194/hess-21-1973-2017](https://doi.org/10.5194/hess-21-1973-2017).
