@@ -33,6 +33,16 @@ When using conda, the recommended steps to install openAMUNDSEN are:
 
    `conda install --channel=conda-forge openamundsen`
 
+   If you want to use the LiveView window during model runs, additionally install the packages matplotlib and PyQt5 by running
+
+   `conda install --channel=conda-forge matplotlib`
+
+   and
+
+   `pip install PyQt5`
+
+
+
 ## Using virtualenv
 
 If you want to install openAMUNDSEN in a virtual environment instead:
@@ -48,3 +58,7 @@ If you want to install openAMUNDSEN in a virtual environment instead:
 3. Install openAMUNDSEN by running
 
    `pip install openamundsen`
+
+   If you want to use the LiveView window during model runs, additionally install the packages matplotlib and PyQt5 by running
+
+   `pip install matplotlib PyQt5`
