@@ -15,14 +15,15 @@ The general model structure for a simulation is:
     - Model initialization (once)
       - Read input files
       - Analyze terrain
-      - Model run (each time step)
+    - Model run (each time step)
       - Interpolate meteo variables
       - Calculate derived meteo variables
       - Calculate irradiance
       - Calculate snow-vegetation interaction
-      - Calculate surface snow processes
+      - Calculate snow processes
       - Calculate evapotranspiration
-      - Write results
+      - Calculate runoff
+    - Write results
 
 
 <!-- <p align="center">
