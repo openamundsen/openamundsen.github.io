@@ -27,14 +27,26 @@ Two different layering schemes ("Cryolayers" / "Multilayer") are implemented in 
 
 ### Snow layering scheme "Cryolayers"
 
- "Cryolayers" is a bulk-layering scheme using separate layers for new snow, old snow, firn and ice. When using this scheme, the snowpack is taken as one layer to solve its energy balance. If air temperature rises above 0° C the model assumes that melting processes are possible and checks for a positive surface energy balance. If the surface energy balance is positive, melting processes occur where the melt amount is determined by the simulated available excess energy. If the air temperature is below 0°C, an iterative procedure to compute the snow surface temperature needed for closing the energy balance is applied. In this procedure, the snow surface temperature is altered until the residual energy balance passes zero.
+"Cryolayers" is a bulk-layering scheme using separate layers for new snow, old snow, firn and ice. When using this scheme, the snowpack is taken as one layer to solve its energy balance. If air temperature rises above 0° C the model assumes that melting processes are possible and checks for a positive surface energy balance. If the surface energy balance is positive, melting processes occur where the melt amount is determined by the simulated available excess energy. If the air temperature is below 0°C, an iterative procedure to compute the snow surface temperature needed for closing the energy balance is applied. In this procedure, the snow surface temperature is altered until the residual energy balance passes zero.
 
 ### Snow layering scheme "Multilayer"
 
-"Multilayer" is a scheme that divides the snowpack in distinct layers to calculate heat fluxes within the snow pack (Essery 2015). To solve the energy balance within this scheme, in a first step, melt is assumed to be 0 for the surface temperature change of every timestep. If the energy balance results in a surface temperature above 0° C, snow is melting. The temperature increment has to be recalculated assuming that all of the snow melts. If this results in a surface temperature below 0°C, snow melts only partially during the timestep (Essery 2015).
+"Multilayer" is a scheme that divides the snowpack in distinct layers to calculate heat fluxes within the snow pack (Essery 2015). To solve the energy balance within this scheme, in a first step, melt is assumed to be zero for the surface temperature change of every timestep. If the energy balance results in a surface temperature above 0 °C, snow is melting. The temperature increment has to be recalculated assuming that all of the snow melts. If this results in a surface temperature below 0 °C, snow melts only partially during the timestep (Essery 2015).
+
+## Snow density estimation
+
+Density for fresh snow is assumed to be 100 kg/m³. Snow compaction is calculated using one of the approaches described in the following.
+
+### Method proposed by Anderson (1976)
+
+This method calculates compaction for each snow layer depending on overlying snowmasses by determining equilibrium metamorphism. Details about the approach and the implemented parameters are described in Koivusalo et al. (2001).
+
+### Empirical approach (Essery 2015)
+
+The empirical approach follows the method described in Essery (2015). Assumptions are made for maximum density of snow for below 0° C and for melting conditions (default values: 300 kg/m³ for cold snow and 500 kg/m³ for melting snow). The timescale for compaction is an adjustable parameter (default value: 200 h). The increase of density for every timestep is calculated as a fraction of the compaction timescale multiplied with the difference of maximum density and the density of the last timestep. This method can only be applied when using the "Multilayer" snow layering scheme.
 
 
-## Choose and configure method in openAMUNDSEN
+## Choose and configure methods in openAMUNDSEN
 
 ### "Cryolayers" scheme
 
@@ -112,6 +124,10 @@ snow:
 
 ## References
 
+- Anderson, E. A. (1976): A point energy and mass balance model of a snow cover (NOAA Technical Report NWS 19, pp. 1–172). NOAA. https://repository.library.noaa.gov/view/noaa/6392
+
 - Essery, R. (2015): A factorial snowpack model (FSM 1.0). Geoscientific Model Development, 8(12), 3867–3876, [https://doi.org/10.5194/gmd-8-3867-2015](https://doi.org/10.5194/gmd-8-3867-2015).
+
+- Koivusalo, H., Heikinheimo, M., & Karvonen, T. (2001). Test of a simple two-layer parameterisation to simulate the energy balance and temperature of a snow pack. Theoretical and Applied Climatology, 70(1–4), 65–79. https://doi.org/10.1007/s007040170006
 
 - Strasser, U. (2008): Modelling of the mountain snow cover in the Berchtesgaden National Park, Tech. Rep. 55, Berchtesgaden National Park, Berchtesgaden.
