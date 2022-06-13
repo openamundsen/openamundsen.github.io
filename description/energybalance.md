@@ -39,7 +39,7 @@ Density for fresh snow is assumed to be 100 kg/m³. Snow compaction is calculate
 
 ### Method proposed by Anderson (1976)
 
-This method calculates compaction for each snow layer depending on overlying snowmasses by determining equilibrium metamorphism. Details about the approach and the implemented parameters are described in Koivusalo et al. (2001).
+This method calculates compaction for each snow layer depending on overlying snowmasses and by determining equilibrium metamorphism. Details about the approach and the implemented parameters are described in Koivusalo et al. (2001).
 
 ### Empirical approach (Essery 2015)
 
