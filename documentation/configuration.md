@@ -295,7 +295,7 @@ snow:
     degree_day_factor: 1.2 # degree day factor for the temperature index methods (kg m-2 d-1 K-1)
     albedo_factor: 0.1 # albedo factor for the enhanced temperature index method (m2 kg m-2 W-1 d-1)
 
-soil:
+soil: # Soil parameters for FSM soil module (not used for FAO evapotranspiration)
   thickness:
     - 0.1
     - 0.2
@@ -333,6 +333,7 @@ evapotranspiration:
 
 land_cover:
   classes:
+    # Water (https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/index-clc-512.html)
     1:
       crop_coefficient_type: single
       crop_coefficients:
@@ -349,18 +350,21 @@ land_cover:
       rooting_depth: .nan
       depletion_fraction: .nan
       is_water_body: true
+    # Bare rock (https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/index-clc-332.html)
     2:
       is_sealed: true
       max_sealed_interception: 0.935
       max_height: 1.9
       depletion_fraction: .nan
       rooting_depth: .nan
+    # Settlement (https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/index-clc-111.html)
     3:
       is_sealed: true
       max_sealed_interception: 0.935
       max_height: 1.9
       depletion_fraction: .nan
       rooting_depth: .nan
+    # Pasture (https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/index-clc-231.html)
     4:
       crop_coefficient_type: dual
       crop_coefficients:
@@ -376,6 +380,7 @@ land_cover:
       max_height: 0.225
       rooting_depth: 0.5
       depletion_fraction: 0.6
+    # Coniferous forest (https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/index-clc-312.html)
     5:
       is_forest: true
       crop_coefficient_type: dual
@@ -397,6 +402,7 @@ land_cover:
         min: 3.8
         max: 5.1
         effective_add: 3.2
+    # Deciduous forest (https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/index-clc-311.html)
     6:
       is_forest: true
       crop_coefficient_type: dual
@@ -418,6 +424,8 @@ land_cover:
         min: 0.5
         max: 4.4
         effective_add: 1.9
+    # Mixed forest (https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/index-clc-313.html)
+    # (ET parameters currently the same as for coniferous forest)
     7:
       is_forest: true
       crop_coefficient_type: dual
@@ -439,6 +447,7 @@ land_cover:
         min: 2.0
         max: 4.7
         effective_add: 2.5
+    # Arable land
     8:
       crop_coefficient_type: dual
       crop_coefficients:
@@ -454,6 +463,8 @@ land_cover:
       max_height: 2.
       rooting_depth: 1.35
       depletion_fraction: 0.55
+    # Natural grassland (https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/index-clc-321.html)
+    # TODO: currently uses the same parameters as for pastures; should be adjusted
     9:
       crop_coefficient_type: dual
       crop_coefficients:
@@ -469,6 +480,8 @@ land_cover:
       max_height: 0.225
       rooting_depth: 0.5
       depletion_fraction: 0.6
+    # Transitional zone (https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/index-clc-324.html)
+    # (assumed to be non-leaf dropping with 25% soil coverage)
     10:
       crop_coefficient_type: dual
       crop_coefficients:
@@ -482,10 +495,12 @@ land_cover:
         - 366
         - 0
       max_height: 3.
-      rooting_depth: 5.
+      rooting_depth: 0.5
       depletion_fraction: 0.5
       is_sparse: true
       sparse_vegetation_fraction: 0.25
+    # Alpine vegetation (https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/index-clc-322.html)
+    # TODO: currently uses the same parameters as for pastures; should be adjusted
     11:
       crop_coefficient_type: dual
       crop_coefficients:
@@ -501,6 +516,8 @@ land_cover:
       max_height: 0.225
       rooting_depth: 0.5
       depletion_fraction: 0.6
+    # Wetland (https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/index-clc-411.html)
+    # TODO: currently uses the same parameters as for pastures; should be adjusted
     12:
       crop_coefficient_type: dual
       crop_coefficients:
@@ -517,7 +534,7 @@ land_cover:
       rooting_depth: 0.5
       depletion_fraction: 0.6
 
-liveview: # enable LiveView window during model run with customized variables and min/max ranges
+liveview:
   enabled: true
   cols: 5
   width: 1200
