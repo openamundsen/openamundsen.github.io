@@ -26,6 +26,6 @@ The general model structure for a simulation is:
     - Write results
 
 
-<!-- <p align="center">
+<p align="center">
     <img src="/description/model_structure.png" />
-</p> -->
+</p>
