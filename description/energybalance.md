@@ -35,7 +35,8 @@ Two different layering schemes ("Cryolayers" / "Multilayer") are implemented in 
 
 ## Snow density estimation
 
-Density for fresh snow is assumed to be 100 kg/m³. Snow compaction is calculated using one of the approaches described in the following.
+Fresh snow density is calculated using wet bulb temperature according to Anderson (1976). If the temperature is below -15° C, fresh snow density is assumed to be 50 kg/m³. If the temperature is higher than -15° C an exponential function is applied (see Koivusalo et al. 2001).
+Snow compaction is calculated using one of the approaches described in the following.
 
 ### Method proposed by Anderson (1976)
 
