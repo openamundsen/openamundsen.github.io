@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Snow and Energy balance
+title: Snow and energy balance
 parent: Description
 nav_order: 5
 permalink: /des/energy
