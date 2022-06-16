@@ -27,6 +27,8 @@ openAMUNDSEN provides a set of procedures suited specifically for topographicall
 
 ### Regression-based approach including interpolation of the residuals (`regression`)
 
+can be applied to `temperature`, `precipitation`, `humidity`, `wind speed`
+
 For each model time step,
 - a regression analysis between observations and the associated station elevation is performed to derive an elevation-dependent trend function.
 - the derived function is applied upon a digital elevation model to create a trend field for a given meteorological variable (e.g., temperature as a function of elevation).
@@ -36,9 +38,25 @@ For each model time step,
 
 
 
-### Monthly altitudinal gradients (`fixed`/`fractional`)
 
-This method uses prescribed monthly altitudinal gradients either in absolute (`fixed`) or fractional (`fractional`) values. Fractional values are useful for precipitation gradients.
+### Monthly altitudinal gradients including interpolation of the residuals (`fixed`/`fractional`)
+
+can be applied to `temperature`, `precipitation`, `humidity`, `wind speed`
+
+This method is similar to the regression-based approach but uses prescribed monthly altitudinal gradients (lapse rates) either in absolute (`fixed`) or fractional (`fractional`) values for the first step. Fractional values are used for precipitation gradients.
+
+
+<!-- ### xxx `adjustment factor`
+
+can be applied to `precipitation`
+
+### xxx `Liston`
+
+can be applied to `wind speed`
+
+### Estimation and regionalisation of cloudiness
+During daytime, cloud coverage is determined by comparing potential to observed global radiation (see Sect. [Radiation modeling](/des/radiation)). It is regionalised xxx
+During nighttime, cloudiness is either kept constant or estimated by an approach following xxx -->
 
 
 ## Choose and configure method in openAMUNDSEN
