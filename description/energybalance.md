@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Energy balance
+title: Snow and Energy balance
 parent: Description
 nav_order: 5
 permalink: /des/energy
 ---
 
-# Calculating the energy balance of snow and ice
+# Calculating snow processes and the energy balance of snow
 
 Generally, the energy balance of a snowpack can be expressed as:
 
@@ -21,7 +21,7 @@ Generally, the energy balance of a snowpack can be expressed as:
 		M = energy transferred to snow melt
 
 
-## Energy balance in openAMUNDSEN
+## Snow layering schemes and energy balance
 
 Two different layering schemes ("Cryolayers" / "Multilayer") are implemented in the model. The energy balance calculation depends on the selected layering scheme.
 
@@ -33,7 +33,19 @@ Two different layering schemes ("Cryolayers" / "Multilayer") are implemented in 
 
 "Multilayer" is a scheme that divides the snowpack in distinct layers to calculate heat fluxes within the snow pack (Essery 2015). To solve the energy balance within this scheme, in a first step, melt is assumed to be zero for the surface temperature change of every timestep. If the energy balance results in a surface temperature above 0 °C, snow is melting. The temperature increment has to be recalculated assuming that all of the snow melts. If this results in a surface temperature below 0 °C, snow melts only partially during the timestep (Essery 2015).
 
-## Snow density estimation
+## Snow albedo
+
+Snow albedo strongly varies in space and time depending on snow characteristics like grain size, density and snow impurity. In openAMUNDSEN, it is modelled using two different approaches for albedo ageing and refreshing.
+
+### Albedo ageing
+
+Both approaches use an exponential ageing curve which is linked to either air temperature (Hanzer et al., 2016) or snow surface temperature (Essery et al., 2013) and is adjusted to melting or cold snow conditions. Melting conditions are assumed if temperature (air or snow surface) is greater or equals 0° C. Cold snow conditions are asssumed for temperatures below 0° C.
+
+### Albedo refreshing
+Snowfall leads to a "refreshing" of the snow surface and an abruptly increasing albedo. The method by Hanzer et al. (2016) uses a threshold of solid precipitation per timestep (default: 0.5 kg/m²) to reset the value of snow albedo to its predefined maximum. Essery et al. (2013) introduce a method, where snow albedo is continuously increasing towards the predefined maximum.
+
+
+## Fresh snow density and snow compaction
 
 Fresh snow density is calculated using wet bulb temperature according to Anderson (1976). If the temperature is below -15° C, fresh snow density is assumed to be 50 kg/m³. If the temperature is higher than -15° C an exponential function is applied (see Koivusalo et al. 2001).
 Snow compaction is calculated using one of the approaches described in the following.
@@ -45,6 +57,10 @@ This method calculates compaction for each snow layer depending on overlying sno
 ### Empirical approach (Essery 2015)
 
 The empirical approach follows the method described in Essery (2015). Assumptions are made for maximum density of snow for below 0° C and for melting conditions (default values: 300 kg/m³ for cold snow and 500 kg/m³ for melting snow). The timescale for compaction is an adjustable parameter (default value: 200 h). The increase of density for every timestep is calculated as a fraction of the compaction timescale multiplied with the difference of maximum density and the density of the last timestep. This method can only be applied when using the "Multilayer" snow layering scheme.
+
+## Liquid water content
+
+The model simulates liquid water content (LWC) and potential refreezing within the snowpack. Following either Braun (1984) or Essery (2015), the parameter maximum LWC is defined as mass fraction of SWE or as a fraction of pore volume that can be filled with liquid water (volumetric water content). If the maximum LWC is reached during snowmelt, runoff at the bottom of a snow layer occurs and drains to the snow layer underneath, or - for the bottom snow layer - into the upper soil layer respectively.
 
 
 ## Choose and configure methods in openAMUNDSEN
@@ -127,7 +143,13 @@ snow:
 
 - Anderson, E. A. (1976): A point energy and mass balance model of a snow cover (NOAA Technical Report NWS 19, pp. 1–172). NOAA. https://repository.library.noaa.gov/view/noaa/6392
 
+- Braun, L. N. (1984): Simulation of snowmelt-runoff in lowland and lower alpine regions of Switzerland. Dissertation. Zürich. https://doi.org/10.3929/ethz-a-000334295
+
+- Essery, R., Morin, S., Lejeune, Y. and Ménard C. B. (2013): A comparison of 1701 snow models using observations from an alpine site. Advances in Water Resources 55:131-148.
+
 - Essery, R. (2015): A factorial snowpack model (FSM 1.0). Geoscientific Model Development, 8(12), 3867–3876, [https://doi.org/10.5194/gmd-8-3867-2015](https://doi.org/10.5194/gmd-8-3867-2015).
+
+- Hanzer, F., Helfricht, K., Marke, T. and Strasser, U. (2016): Multi-level spatiotemporal validation of snow/ice mass balance and runoff modeling in glacierized catchments. The Cryosphere, 10, 1859-1881, https://doi.org/10.5194/tc-10-1859-2016.
 
 - Koivusalo, H., Heikinheimo, M., & Karvonen, T. (2001). Test of a simple two-layer parameterisation to simulate the energy balance and temperature of a snow pack. Theoretical and Applied Climatology, 70(1–4), 65–79. https://doi.org/10.1007/s007040170006
 
