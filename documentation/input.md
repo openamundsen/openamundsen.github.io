@@ -10,21 +10,43 @@ permalink: /doc/input
 
 Required input data for running the model is at the least:
 
-* a digital elevation model (DEM) as an [Arc/Info ASCII
+- a digital elevation model (DEM) as an [Arc/Info ASCII
   Grid](https://en.wikipedia.org/wiki/Esri_grid) (.asc) file in a projected coordinate reference
   system, with the same spatial resolution in which the model should be run,
-* and time series of the meteorological variables air temperature, precipitation, relative humidity,
+- and time series of the meteorological variables air temperature, precipitation, relative humidity,
   global radiation and wind speed in NetCDF or CSV format.
-
-Optionally, a region of interest (ROI) file can be additionally supplied defining a subset of the
-DEM area in which the model should be applied.
-All model calculations are then only performed for the pixels which are marked as 1 in the ROI file.
 
 ## Spatial input data
 
-The DEM file must be named `dem_{domain}_{resolution}.asc`, where `{domain}` refers to the (freely
-selectable) name of the respective model domain, and `{resolution}` to the spatial resolution in m.
-Accordingly, the ROI file (if available) is named `roi_{domain}_{resolution}.asc`.
+Mandatory:
+- `dem_{domain}_{resolution}.asc`: digital elevation model
+
+Optional:
+- `roi_{domain}_{resolution}.asc`: region of interest
+- `lc_{domain}_{resolution}.asc`: land cover
+- `soil_{domain}_{resolution}.asc`: soil data
+
+All input grids have to be provided as [Arc/Info ASCII
+  Grid files](https://en.wikipedia.org/wiki/Esri_grid) (.asc)in the exact same format, reference system, extent, and spatial resolution.
+
+
+#### Digital elevation model (`dem_{domain}_{resolution}.asc`)
+
+A DEM as an [Arc/Info ASCIIGrid](https://en.wikipedia.org/wiki/Esri_grid) (.asc) file in a projected coordinate reference system, with the same spatial resolution in which the model should be run has to be provided. The DEM file must be named `dem_{domain}_{resolution}.asc`, where `{domain}` refers to the (freely selectable) name of the respective model domain, and `{resolution}` to the spatial resolution in m.
+
+#### Region of interest (`roi_{domain}_{resolution}.asc`)
+
+Optionally, a region of interest (ROI) file can be additionally supplied defining a subset of the
+DEM area in which the model should be applied. All model calculations are then only performed for the pixels which are marked as 1 in the ROI file. Accordingly, the ROI file (if available) is named `roi_{domain}_{resolution}.asc`.
+
+#### Land cover (`lc_{domain}_{resolution}.asc`)
+
+If either the [canopy](/des/canopy) or the [evapotranspiration module](/des/evapotranspiration) is enabled, land cover classes have to be provided as a grid input file named `lc_{domain}_{resolution}.asc`. The according parameters are defined in [land_cover_class_params.yml](https://github.com/openamundsen/openamundsen/blob/main/openamundsen/data/land_cover_class_params.yml).
+
+#### Soil data (`soil_{domain}_{resolution}.asc`)
+
+When using the [evapotranspiration module](/des/evapotranspiration) a grid containing soil texture classes has to be provided (`soil_{domain}_{resolution}.asc`). The soil texture classes are listed in [soiltexture.py](https://github.com/openamundsen/openamundsen/blob/main/openamundsen/modules/evapotranspiration/soiltexture.py). The according parameters are listed in [evapotranspiration.py](https://github.com/openamundsen/openamundsen/blob/main/openamundsen/modules/evapotranspiration/evapotranspiration.py).
+
 
 ## Meteorological input data
 

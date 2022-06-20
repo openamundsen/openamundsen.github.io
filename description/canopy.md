@@ -11,6 +11,8 @@ permalink: /des/canopy
 
 The processes affecting a snow cover beneath a forest canopy are distinct from those in the open: on one hand, the meteorological conditions relevant for the energy transfer at the snow surface beneath the canopy are different, and on the other hand, a certain amount of precipitation is retained in the interception storage of stems, branches and needles. Snow that is intercepted in the canopy can melt, fall down, or sublimate into the air masses above the canopy. This latter process leads to a reduction of precipitation accumulated and stored in the ground snowpack.
 
+To simulate these processes openAMUNDSEN extracts vegetation- and season-dependent values of leaf areas index (LAI) from the given land cover which is provided as a grid input file (see [Spatial Input data](/doc/input)). The according land cover class parameters are defined in [land_cover_class_params.yml](https://github.com/openamundsen/openamundsen/blob/main/openamundsen/data/land_cover_class_params.yml).
+
 ## Inside-canopy micrometeorology
 
 Forest canopies generally lead to a reduction of global radiation, precipitation and wind speed, whereas humidity and long-wave radiation are increased and the diurnal temperature cycle is attenuated. In openAMUNDSEN, the micrometeorological conditions for the ground beneath a forest canopy are derived from the interpolated measurements (if all stations are located in the open) by applying a set of modifications for solar and thermal radiation, temperature, humidity and wind speed. The modifications are based on the effective Leaf Area Index (LAI) of the forest.

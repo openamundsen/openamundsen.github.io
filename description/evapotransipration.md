@@ -8,8 +8,7 @@ permalink: /des/evapotranspiration
 
 # Calculating evapotranspiration using the FAO Penman-Monteith method
 
-Evapotranspiration from snow-free surfaces is simulated using the FAO Penman-Monteith approach (Allen et al. 1998).
-
+Evapotranspiration from snow-free surfaces is simulated using the FAO Penman-Monteith approach (Allen et al. 1998). It uses soil and land cover data which both have to provided as grid input files (see [Spatial Input data](/doc/input)).
 
 ## Choose and configure method in openAMUNDSEN
 
