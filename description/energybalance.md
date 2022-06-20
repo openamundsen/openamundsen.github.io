@@ -62,6 +62,10 @@ The empirical approach follows the method described in Essery (2015). Assumption
 
 The model simulates liquid water content (LWC) and potential refreezing within the snowpack. Following either Braun (1984) or Essery (2015), the parameter maximum LWC is defined as mass fraction of SWE or as a fraction of pore volume that can be filled with liquid water (volumetric water content). If the maximum LWC is reached during snowmelt, runoff at the bottom of a snow layer occurs and drains to the snow layer underneath, or - for the bottom snow layer - into the upper soil layer respectively.
 
+## Snowmelt and (re)sublimation
+
+In openAMUNDSEN, snowmelt and (re)sublimation is explicitly calculated by solving the energy balance depending on the layering schemes described above (`energy_balance`). For use cases where input data is sparse or computation time is critical, two temperature index methods are implemented to determine snowmelt, one using air temperature only (`temperature_index`), the other using temperature and global radiation (`enhanced_temperature_index`). 
+
 
 ## Choose and configure methods in openAMUNDSEN
 
@@ -97,11 +101,9 @@ snow:
   snow_cover_fraction_depth_scale: 1.e-6 # snow cover fraction depth scale (m)
 ```  
 
-
-### General snow and energy-balance related model parameters
+### Snow albedo
 
 ```yaml
-# Snow parameters
 snow:
   # Albedo parameters
   albedo:
@@ -115,7 +117,11 @@ snow:
     decay_timescale_determination_temperature: surface # use surface temperature to distinguish between cold and melting snow
     refresh_snowfall: 0.5 # snowfall amount for resetting albedo to the maximum value (kg m-2 h-1)
     refresh_method: binary # binary or continuous
+```
 
+### Snow compaction
+
+```yaml
   # Snow compaction parameters
   compaction:
     method: anderson # anderson or empirical
@@ -124,20 +130,28 @@ snow:
     timescale: 200 # snow compaction timescale (h)
     max_cold_density: 300 # maximum density for cold (T < 0 °C) snow (kg m-3)
     max_melting_density: 500 # maximum density for melting snow (kg m-3)
+```
 
+### Liquid water content
+
+```yaml
   # Liquid water content parameters
   liquid_water_content:
     method: pore_volume_fraction # pore_volume_fraction or mass_fraction
     max: 0.03 # maximum liquid water content as a fraction of the total pore volume or mass
+```
 
+### Snowmelt
+
+```yaml
   # Melt parameters
   melt:
     method: energy_balance # melt method (energy_balance, temperature_index or enhanced_temperature_index)
     threshold_temp: 273.15 # threshold temperature for the temperature index methods (K)
     degree_day_factor: 1.2 # degree day factor for the temperature index methods (kg m-2 d-1 K-1)
     albedo_factor: 0.1 # albedo factor for the enhanced temperature index method (m2 kg m-2 W-1 d-1)
-
 ```
+
 
 ## References
 
