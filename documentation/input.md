@@ -30,20 +30,20 @@ All input grids have to be provided as [Arc/Info ASCII
   Grid files](https://en.wikipedia.org/wiki/Esri_grid) (.asc)in the exact same format, reference system, extent, and spatial resolution.
 
 
-#### Digital elevation model (`dem_{domain}_{resolution}.asc`)
+### Digital elevation model (`dem_{domain}_{resolution}.asc`)
 
 A DEM as an [Arc/Info ASCIIGrid](https://en.wikipedia.org/wiki/Esri_grid) (.asc) file in a projected coordinate reference system, with the same spatial resolution in which the model should be run has to be provided. The DEM file must be named `dem_{domain}_{resolution}.asc`, where `{domain}` refers to the (freely selectable) name of the respective model domain, and `{resolution}` to the spatial resolution in m.
 
-#### Region of interest (`roi_{domain}_{resolution}.asc`)
+### Region of interest (`roi_{domain}_{resolution}.asc`)
 
 Optionally, a region of interest (ROI) file can be additionally supplied defining a subset of the
 DEM area in which the model should be applied. All model calculations are then only performed for the pixels which are marked as 1 in the ROI file. Accordingly, the ROI file (if available) is named `roi_{domain}_{resolution}.asc`.
 
-#### Land cover (`lc_{domain}_{resolution}.asc`)
+### Land cover (`lc_{domain}_{resolution}.asc`)
 
 If either the [canopy](/des/canopy) or the [evapotranspiration module](/des/evapotranspiration) is enabled, land cover classes have to be provided as a grid input file named `lc_{domain}_{resolution}.asc`. The according parameters are defined in [land_cover_class_params.yml](https://github.com/openamundsen/openamundsen/blob/main/openamundsen/data/land_cover_class_params.yml).
 
-#### Soil data (`soil_{domain}_{resolution}.asc`)
+### Soil data (`soil_{domain}_{resolution}.asc`)
 
 When using the [evapotranspiration module](/des/evapotranspiration) a grid containing soil texture classes has to be provided (`soil_{domain}_{resolution}.asc`). The soil texture classes are listed in [soiltexture.py](https://github.com/openamundsen/openamundsen/blob/main/openamundsen/modules/evapotranspiration/soiltexture.py). The according parameters are defined in [evapotranspiration.py](https://github.com/openamundsen/openamundsen/blob/main/openamundsen/modules/evapotranspiration/evapotranspiration.py).
 
@@ -59,23 +59,22 @@ For each point location, a CSV or NetCDF file covering the entire time series mu
 When using CSV as input format, the input files should have one or more of the following columns
 (columns for variables not available can be omitted):
 
-* `date`: timestamp as a
-  [`pd.to_datetime`](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html)-compatible
-  string (e.g. `YYYY-MM-DD HH:MM`)
-* `temp`: air temperature (K)
-* `precip`: precipitation sum (kg m<sup>-2</sup>)
-* `rel_hum`: relative humidity (%)
-* `sw_in`: global radiation (W m<sup>-2</sup>)
-* `wind_speed`: wind speed (m s<sup>-1</sup>)
+- `date`: timestamp as a
+  [`pd.to_datetime`](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html)-compatible string (e.g. `YYYY-MM-DD HH:MM`)
+- `temp`: air temperature (K)
+- `precip`: precipitation sum (kg m<sup>-2</sup>)
+- `rel_hum`: relative humidity (%)
+- `sw_in`: global radiation (W m<sup>-2</sup>)
+- `wind_speed`: wind speed (m s<sup>-1</sup>)
 
 Additionally, a `stations.csv` file containing the metadata of the point locations must be provided
 containing the following columns:
 
-* `id`: station ID, corresponding to the filename of the respective data file
-* `name`: station name
-* `x`: longitude or projected x coordinate
-* `y`: latitude or projected y coordinate
-* `alt`: altitude (m)
+- `id`: station ID, corresponding to the filename of the respective data file
+- `name`: station name
+- `x`: longitude or projected x coordinate
+- `y`: latitude or projected y coordinate
+- `alt`: altitude (m)
 
 ### NetCDF input
 
