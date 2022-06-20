@@ -27,7 +27,7 @@ openAMUNDSEN provides a set of procedures suited specifically for topographicall
 
 ### Regression-based approach including interpolation of the residuals (`regression`)
 
-can be applied to `temperature`, `precipitation`, `humidity`, `wind speed`
+- can be applied to `temperature`, `precipitation`, `humidity`, `wind speed`
 
 For each model time step,
 - a regression analysis between observations and the associated station elevation is performed to derive an elevation-dependent trend function.
@@ -41,22 +41,30 @@ For each model time step,
 
 ### Monthly altitudinal gradients including interpolation of the residuals (`fixed`/`fractional`)
 
-can be applied to `temperature`, `precipitation`, `humidity`, `wind speed`
+- can be applied to `temperature`, `precipitation`, `humidity`, `wind speed`
 
 This method is similar to the regression-based approach but uses prescribed monthly altitudinal gradients (lapse rates) either in absolute (`fixed`) or fractional (`fractional`) values for the first step. Fractional values are used for precipitation gradients.
 
 
-<!-- ### xxx `adjustment factor`
+### MicroMet: precipitation regionalisation (`adjustment factor`)
 
-can be applied to `precipitation`
+- can be applied to `precipitation`
 
-### xxx `Liston`
+Please see details about this method in Liston and Elder (2016).
 
-can be applied to `wind speed`
+### Micromet: wind speed regionalisation using topography (`Liston`)
 
-### Estimation and regionalisation of cloudiness
-During daytime, cloud coverage is determined by comparing potential to observed global radiation (see Sect. [Radiation modeling](/des/radiation)). It is regionalised xxx
-During nighttime, cloudiness is either kept constant or estimated by an approach following xxx -->
+- can be applied to `wind speed`
+
+Please see details about this method in Liston and Elder (2016).
+
+### Estimation of cloudiness
+
+- can be applied to `cloudiness`
+
+- During daytime, cloud coverage is either determined by comparing potential to observed global radiation (method: `clear_sky_fraction`, see also Sect. [Radiation modeling](/des/radiation)) or it is estimated using atmospheric humidity following Liston and Elder (2016).
+
+- During nighttime, cloudiness is either kept constant (method: `constant`) or estimated using humidty (method: `humidity`) following Liston and Elder (2016)
 
 
 ## Choose and configure method in openAMUNDSEN
@@ -139,3 +147,7 @@ meteo:
   stability_correction: false # adjust turbulent fluxes for atmospheric stability
   stability_adjustment_parameter: 5. # adjustment parameter for atmospheric stability correction
 ```
+
+## References
+
+- Liston, G. E. and Elder, K. (2006): A meteorological distribution system for high-resolution terrestrial modeling (MicroMet). Journal of Hydrometeorology, 7(2), 217-234, [https://doi.org/10.1175/JHM486.1](https://doi.org/10.1175/JHM486.1).
