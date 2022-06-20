@@ -45,7 +45,7 @@ If either the [canopy](/des/canopy) or the [evapotranspiration module](/des/evap
 
 #### Soil data (`soil_{domain}_{resolution}.asc`)
 
-When using the [evapotranspiration module](/des/evapotranspiration) a grid containing soil texture classes has to be provided (`soil_{domain}_{resolution}.asc`). The soil texture classes are listed in [soiltexture.py](https://github.com/openamundsen/openamundsen/blob/main/openamundsen/modules/evapotranspiration/soiltexture.py). The according parameters are listed in [evapotranspiration.py](https://github.com/openamundsen/openamundsen/blob/main/openamundsen/modules/evapotranspiration/evapotranspiration.py).
+When using the [evapotranspiration module](/des/evapotranspiration) a grid containing soil texture classes has to be provided (`soil_{domain}_{resolution}.asc`). The soil texture classes are listed in [soiltexture.py](https://github.com/openamundsen/openamundsen/blob/main/openamundsen/modules/evapotranspiration/soiltexture.py). The according parameters are defined in [evapotranspiration.py](https://github.com/openamundsen/openamundsen/blob/main/openamundsen/modules/evapotranspiration/evapotranspiration.py).
 
 
 ## Meteorological input data
