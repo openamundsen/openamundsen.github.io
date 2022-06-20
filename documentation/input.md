@@ -27,7 +27,7 @@ Optional:
 - `soil_{domain}_{resolution}.asc`: soil data
 
 All input grids have to be provided as [Arc/Info ASCII
-  Grid files](https://en.wikipedia.org/wiki/Esri_grid) (.asc)in the exact same format, reference system, extent, and spatial resolution.
+  Grid files](https://en.wikipedia.org/wiki/Esri_grid) (.asc) in the exact same format, reference system, extent, and spatial resolution.
 
 
 ### Digital elevation model (`dem_{domain}_{resolution}.asc`)
