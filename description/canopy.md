@@ -24,6 +24,14 @@ In openAMUNDSEN, the processes of snow-forest interaction of interception, i.e. 
 ```yaml
 canopy:
     enabled: true
+    extinction_coefficient: 0.71
+    temperature_scaling_coefficient: 0.8
+    canopy_flow_index_coefficient: 0.9
+    spherical_ice_particle_radius: 500.e-6
+    kinematic_air_viscosity: 1.3e-5
+    max_interception_storage_coefficient: 4.4
+    exposure_coefficient_coefficient: 0.010
+    degree_day_factor: 5.
 ```
 
 ## References

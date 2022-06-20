@@ -16,6 +16,14 @@ Evapotranspiration from snow-free surfaces is simulated using the FAO Penman-Mon
 ```yaml
 evapotranspiration:
     enabled: true
+    min_crop_coefficient: 0.175
+    grass_albedo: 0.23
+    grass_emissivity: 0.985
+    sealed_albedo: 0.4
+    sealed_emissivity: 0.92
+    mean_wind_speed: 2.
+    mean_min_humidity: 45.
+    surface_soil_layer_evaporation_depth: 0.125
 ```
 
 ## References
