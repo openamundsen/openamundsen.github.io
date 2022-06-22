@@ -68,7 +68,7 @@ Please see details about this method in Liston and Elder (2016).
 
 ## Precipitation phase
 
-Precipitation phase is determined by either air temperature (method: `temp`) or wet-bulb temperature (method: `wet_bulb_temp`). For both methods, a threshold with an enclosing temperature range is defined. Precipitation is determined as liquid above the upper end of the temperature range, and as solid below the lower end. Within the defined temperature range, the fractions of solid/liquid precipitation are linearly distributed between 100% liquid at the upper and 100 % solid at the lower end of the range with 50% liquid/solid precipitation at the threshold temperature. 
+Precipitation phase is determined by either air temperature (method: `temp`) or wet-bulb temperature (method: `wet_bulb_temp`). For both methods, a threshold with an enclosing temperature range is defined. Precipitation is determined as liquid above the upper end, and as solid below the lower end of the temperature range, respectively. Within the defined temperature range, the fractions of solid/liquid precipitation are linearly distributed between 100% liquid at the upper and 100 % solid at the lower end of the range with 50% liquid/solid precipitation at the threshold temperature. 
 
 
 
