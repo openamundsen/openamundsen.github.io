@@ -10,7 +10,7 @@ permalink: /des/structure
 
 openAMUNDSEN is a fully distributed model, designed primarily for resolving the mass and energy balance of snow and ice covered surfaces in mountain regions. Its modular architecture allows for creating simulations of different complexity and using different methods.
 
-The general model structure for a simulation is:
+<!-- The general model structure for a simulation is:
 
     - Model initialization (once)
       - Read input files
@@ -23,7 +23,7 @@ The general model structure for a simulation is:
       - Calculate snow processes
       - Calculate evapotranspiration
       - Calculate runoff
-    - Write results
+    - Write results -->
 
 
 <p align="center">
