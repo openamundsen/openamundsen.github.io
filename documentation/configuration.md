@@ -196,9 +196,9 @@ meteo:
         - -0.0046 # D
 
     cloudiness:
-      day_method: clear_sky_fraction # use the ratio of measured vs. potential shortwave radiation to calculate cloudiness
-      night_method: humidity # "constant" keep the last cloudiness value of the day during nighttime, "humidity" xxx
-      allow_fallback: true # xxx
+      method: clear_sky_fraction # use the ratio of measured vs. potential shortwave radiation to calculate cloudiness
+      clear_sky_fraction_night_method: humidity # "constant" keep the last cloudiness value of the day during nighttime, "humidity" xxx
+      allow_fallback: true # allow to fall back to calculate cloud fraction using other methods if the selected method is unavailable (e.g. due to missing measurements)
 
     wind_speed:
       trend_method: regression
