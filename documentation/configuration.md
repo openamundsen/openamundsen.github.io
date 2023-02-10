@@ -197,7 +197,7 @@ meteo:
 
     cloudiness:
       method: clear_sky_fraction # use the ratio of measured vs. potential shortwave radiation to calculate cloudiness
-      clear_sky_fraction_night_method: humidity # "constant" keep the last cloudiness value of the day during nighttime, "humidity" xxx
+      clear_sky_fraction_night_method: humidity # for method "clear_sky_fraction" calculate nighttime cloudiness using a relationship between relative humidity and air temperature at a defined pressure level
       allow_fallback: true # allow to fall back to calculate cloud fraction using other methods if the selected method is unavailable (e.g. due to missing measurements)
 
     wind_speed:
