@@ -23,7 +23,7 @@ domain: rofental
 start_date: 2019-10-01
 end_date: 2020-09-30
 resolution: 50 # spatial resolution (m)
-timestep: "H" # temporal resolution as a pandas-compatible frequency string (e.g., "H", "3H", "D")
+timestep: h # temporal resolution as a pandas-compatible frequency string (e.g., "h", "3h", "D")
 crs: "epsg:32632" # CRS of the input grids
 timezone: 1 # timezone of the model domain (difference to UTC in h)
 results_dir: results/rofental # directory for storing the model outputs
