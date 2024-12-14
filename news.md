@@ -7,6 +7,8 @@ permalink: /news/
 
 # News
 
+- New openAMUNDSEN papers published, see: [Publications](/publications/) 
+
 - openAMUNDSEN is part of [GEWEX-INARCH models & downscaling tools](https://inarch.usask.ca/science-basins/models-downscaling-tools.php)
 
 - Jun 9 2021: Presentation at [ESC 2021](https://www.easternsnow.org/esc-2021)
