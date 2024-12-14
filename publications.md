@@ -9,11 +9,11 @@ permalink: /publications/
 
 ## Key publications
 
-- Strasser, U., Warscher, M., Rottler, E. and Hanzer, F. (2024): openAMUNDSEN v1.0: an open source snow-hydrological model for mountain regions, Geosci. Model Dev., 17, 6775-6797, https://doi.org/10.5194/gmd-17-6775-2024.
+- Strasser, U., Warscher, M., Rottler, E. and Hanzer, F. (2024): openAMUNDSEN v1.0: an open source snow-hydrological model for mountain regions, Geosci. Model Dev., 17, 6775-6797, [https://doi.org/10.5194/gmd-17-6775-2024](https://doi.org/10.5194/gmd-17-6775-2024).
 
-- Rottler, E., Warscher, M. and Strasser, U. (2024): Spatio-temporal wet snow dynamics from model simulations and remote sensing: A case study from the Rofental, Austria, Hydrol. Process., 38(9), e15279, [https://doi.org/10.1002/hyp.15279] (https://doi.org/10.1002/hyp.15279).
+- Rottler, E., Warscher, M. and Strasser, U. (2024): Spatio-temporal wet snow dynamics from model simulations and remote sensing: A case study from the Rofental, Austria, Hydrol. Process., 38(9), e15279, [https://doi.org/10.1002/hyp.15279](https://doi.org/10.1002/hyp.15279).
 
-- Günther, D., Hanzer, F., Warscher, M., Essery, R. und Strasser, U. (2020): Including parameter uncertainty in an intercomparison of physically-based snow models, Front. Earth Sci., Vol. 8, 542599, [https://doi.org/10.3389/feart.2020.542599] (https://doi.org/10.3389/feart.2020.542599).
+- Günther, D., Hanzer, F., Warscher, M., Essery, R. und Strasser, U. (2020): Including parameter uncertainty in an intercomparison of physically-based snow models, Front. Earth Sci., Vol. 8, 542599, [https://doi.org/10.3389/feart.2020.542599](https://doi.org/10.3389/feart.2020.542599).
 
 - Marke, T., Hanzer, F., Olefs, M. and Strasser, U. (2018): Simulation of Past Changes in the Austrian Snow Cover 1948-2009, J. Hydrometeor., Vol. 19, 1529-1545, [https://doi.org/10.1175/JHM-D-17-0245.1](https://doi.org/10.1175/JHM-D-17-0245.1).
 
